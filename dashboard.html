@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your UniNest Pakistan profile, saved favorites, recent views, and student housing activity from one dashboard.">
+    <title>Dashboard - UniNest Pakistan</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        .dashboard-wrapper { padding: 100px 0 60px; background: var(--bg); min-height: 100vh; }
+        .dash-sidebar { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
+        .dash-avatar { width: 80px; height: 80px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; margin: 0 auto 12px; }
+        .dash-nav a { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: var(--radius-sm); color: var(--text); text-decoration: none; margin-bottom: 4px; font-size: 0.9rem; transition: var(--transition); }
+        .dash-nav a:hover, .dash-nav a.active { background: var(--primary); color: white; }
+
+        .dash-ico { width:22px; height:22px; min-width:22px; display:inline-flex; align-items:center; justify-content:center; }
+        .dash-ico svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .dash-heart svg { stroke:currentColor !important; fill:none !important; }
+        .dash-nav a.active .dash-heart svg { stroke:#fff !important; fill:none !important; }
+        .dash-panel { display: none; }
+        .dash-panel.active { display: block; }
+        .stat-card { background: var(--white); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow); text-align: center; }
+        .stat-card h3 { font-size: 2rem; font-weight: 700; color: var(--primary); margin: 0; }
+        .stat-card p { color: var(--text-light); font-size: 0.85rem; margin: 4px 0 0; }
+        .dash-card { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); margin-bottom: 20px; }
+        .dash-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        .profile-form .form-group { margin-bottom: 16px; }
+        .profile-form label { font-size: 0.85rem; font-weight: 500; color: var(--text-light); display: block; margin-bottom: 6px; }
+        .profile-form input { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.9rem; background: var(--bg); color: var(--text); }
+        .empty-state { text-align: center; padding: 40px; color: var(--text-light); }
+        .empty-state .emoji { font-size: 3rem; display: block; margin-bottom: 12px; }
+        #dash-favs-grid, #dash-recent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+
+        .booking-item { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:16px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--bg); margin-bottom:12px; }
+        .booking-code { display:inline-block; background:rgba(20,184,166,.12); color:var(--accent); font-weight:700; border-radius:999px; padding:4px 10px; font-size:.78rem; }
+        .booking-meta { color:var(--text-light); font-size:.86rem; margin-top:4px; }
+        .booking-status { background:var(--primary); color:#fff; border-radius:999px; padding:6px 12px; font-size:.78rem; text-transform:capitalize; white-space:nowrap; }
+    </style>
+</head>
+<body>
+    <div class="mobile-overlay"></div>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" class="logo-img" alt="UniNest" loading="lazy">
+                <span class="logo-text">UniNest</span>
+            </a>
+            <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="listings.html">Listings</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Cities <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+                    <div class="dropdown-menu">
+                        <a href="city-karachi.html">Karachi</a>
+                        <a href="city-lahore.html">Lahore</a>
+                        <a href="city-islamabad.html">Islamabad</a>
+                    </div>
+                </div>
+                <a href="roommate.html">Roommate Finder</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <div class="nav-buttons nav-buttons-mobile">
+                    <a href="dashboard.html" class="btn btn-primary btn-full">👤 Dashboard</a>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="dashboard.html" class="btn btn-ghost btn-sm" id="nav-username">Dashboard</a>
+                <button onclick="Auth.logout()" class="btn btn-outline btn-sm">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+        <div class="container-fluid px-3 px-md-4">
+            <div class="row g-4">
+                <!-- Sidebar -->
+                <div class="col-12 col-md-3">
+                    <div class="dash-sidebar">
+                        <div class="text-center mb-3">
+                            <div class="dash-avatar" id="dash-avatar">U</div>
+                            <h5 id="dash-name" style="font-weight:600;margin:0">Loading...</h5>
+                            <p id="dash-email" style="color:var(--text-light);font-size:0.82rem;margin:4px 0 0"></p>
+                        </div>
+                        <nav class="dash-nav">
+                            <a href="#" class="active" data-panel="overview"><span class="dash-ico"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg></span>Overview</a>
+                            <a href="#" data-panel="favorites"><span class="dash-ico dash-heart"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>Saved Properties</a>
+                            <a href="#" data-panel="recent"><span class="dash-ico"><svg viewBox="0 0 24 24"><path d="M1.5 12s4-7 10.5-7 10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span>Recently Viewed</a>
+                            <a href="#" data-panel="bookings"><span class="dash-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>My Bookings</a>
+                            <a href="#" data-panel="profile"><span class="dash-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Edit Profile</a>
+                            <a href="#" class="logout-link" onclick="Auth.logout()" style="color:#EF4444;margin-top:8px;border-top:1px solid var(--border);padding-top:12px"><span class="dash-ico"><svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M21 3v18h-8"/></svg></span>Logout</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-12 col-md-9">
+
+                    <!-- Overview Panel -->
+                    <div id="panel-overview" class="dash-panel active">
+                        <div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
+                            <div class="col">
+                                <div class="stat-card">
+                                    <h3 id="stat-favs">0</h3>
+                                    <p>Saved Properties</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="stat-card">
+                                    <h3 id="stat-recent">0</h3>
+                                    <p>Recently Viewed</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="stat-card">
+                                    <h3 id="stat-bookings">0</h3>
+                                    <p>My Bookings</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="stat-card">
+                                    <h3>3</h3>
+                                    <p>Cities Available</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="stat-card">
+                                    <h3>500+</h3>
+                                    <p>Total Listings</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <h4>Welcome to UniNest! 🎉</h4>
+                            <p id="welcome-msg">Your student housing dashboard. Yahan se aap apni saved properties dekh sakte hain, profile update kar sakte hain.</p>
+                            <a href="listings.html" class="btn btn-primary" style="margin-top:12px">Browse Properties</a>
+                            <a href="roommate.html" class="btn btn-outline" style="margin-top:12px;margin-left:8px">Find Roommate</a>
+                        </div>
+                    </div>
+
+                    <!-- Favorites Panel -->
+                    <div id="panel-favorites" class="dash-panel">
+                        <div class="dash-card">
+                            <h4><span class="dash-ico dash-heart"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>Saved Properties</h4>
+                            <div id="dash-favs-grid">
+                                <div class="empty-state"><span class="emoji">🏠</span><p>Koi property save nahi ki abhi tak.</p><a href="listings.html" class="btn btn-primary">Browse Listings</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recently Viewed Panel -->
+                    <div id="panel-recent" class="dash-panel">
+                        <div class="dash-card">
+                            <h4><span class="dash-ico"><svg viewBox="0 0 24 24"><path d="M1.5 12s4-7 10.5-7 10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span>Recently Viewed</h4>
+                            <div id="dash-recent-grid">
+                                <div class="empty-state"><span class="emoji">👁️</span><p>Abhi tak koi property view nahi ki.</p><a href="listings.html" class="btn btn-primary">Explore Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- My Bookings Panel -->
+                    <div id="panel-bookings" class="dash-panel">
+                        <div class="dash-card">
+                            <h4><span class="dash-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>My Bookings</h4>
+                            <div id="dash-bookings-list">
+                                <div class="empty-state"><span class="emoji">📅</span><p>Abhi tak koi booking nahi hui.</p><a href="listings.html" class="btn btn-primary">Book a Property</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Panel -->
+                    <div id="panel-profile" class="dash-panel">
+                        <div class="dash-card">
+                            <h4><span class="dash-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Edit Profile</h4>
+                            <form class="profile-form" id="profile-form">
+                                <div class="row g-3">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Full Name</label>
+                                            <input type="text" id="pf-name" placeholder="Your name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" id="pf-email" placeholder="your@email.com" readonly style="opacity:0.6">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Phone</label>
+                                            <input type="tel" id="pf-phone" placeholder="+92 300 1234567">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>University</label>
+                                            <input type="text" id="pf-uni" placeholder="e.g. NED University">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        <div class="success-message" id="profile-success" style="display:none;margin-top:10px">✅ Profile updated!</div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Property Modal -->
+    <div id="property-modal">
+        <div class="modal-box">
+            <img id="modal-img" class="modal-image" src="" alt="" loading="lazy">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <div class="modal-price" id="modal-price"></div>
+                        <h3 class="modal-title" id="modal-title"></h3>
+                        <div class="modal-location"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span id="modal-location"></span></div>
+                    </div>
+                    <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+                </div>
+                <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:16px" id="modal-desc"></p>
+                <div class="modal-amenities-grid" id="modal-amenities"></div>
+                <div class="modal-actions" style="margin-top:16px">
+                    <a id="modal-whatsapp" href="https://wa.me/923001234567" target="_blank" class="btn btn-primary"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg> WhatsApp Owner</a>
+                    <button onclick="showToast&&showToast('Visit request sent!','success')" class="btn btn-outline"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg> Book Visit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+
+    <script src="api.js"></script>
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+    <script src="script.js" defer></script>
+    <script src="dashboard-advanced.js"></script>
+
+</body>
+</html>

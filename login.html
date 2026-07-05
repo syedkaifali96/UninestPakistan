@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Login or create a UniNest Pakistan account to save favorites, manage bookings, and access your student dashboard." name="description"/>
+<title>Login / Register - UniNest Pakistan</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="images/logo.png" rel="icon"/>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body class="auth-only-page">
+
+
+<div class="auth-page">
+<div class="auth-container">
+<div class="auth-header">
+<a aria-label="UniNest Pakistan Home" class="logo auth-brand" href="index.html"><img alt="UniNest Pakistan" class="logo-img" loading="lazy" src="images/logo.png"/><span class="logo-text">UniNest</span></a>
+<h2>Welcome Back!</h2>
+<p class="auth-subtitle">Login ya register karke UniNest continue karein.</p>
+</div>
+<div class="auth-tabs">
+<button class="auth-tab active" data-tab="login">Login</button>
+<button class="auth-tab" data-tab="register">Register</button>
+</div>
+<div class="auth-body">
+<!-- Login Form -->
+<form class="auth-form active" id="login-form">
+<div class="form-group">
+<label>Email Address <span>*</span></label>
+<input name="email" placeholder="your@email.com" required="" type="email"/>
+<span class="form-error">Please enter a valid email</span>
+</div>
+<div class="form-group">
+<label>Password <span>*</span></label>
+<input name="password" placeholder="Enter your password" required="" type="password"/>
+<span class="form-error">Please enter your password</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:0.85rem">
+<label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--text-light)">
+<input style="width:16px;height:16px" type="checkbox"/> Remember me
+                        </label>
+<a href="forgot-password.html" style="color:var(--primary);font-weight:500">Forgot password?</a>
+</div>
+<button class="btn btn-primary" type="submit">Login</button>
+<div class="auth-error" style="display:none;color:#EF4444;font-size:0.85rem;margin-bottom:8px;padding:8px 12px;background:#FEF2F2;border-radius:6px"></div>
+<div class="success-message">Login successful! Redirecting...</div>
+</form>
+<!-- Register Form -->
+<form class="auth-form" id="register-form">
+<div class="form-group">
+<label>Full Name <span>*</span></label>
+<input name="fullname" placeholder="Enter your full name" required="" type="text"/>
+<span class="form-error">Please enter your full name</span>
+</div>
+<div class="form-group">
+<label>Email Address <span>*</span></label>
+<input name="email" placeholder="your@email.com" required="" type="email"/>
+<span class="form-error">Please enter a valid email</span>
+</div>
+<div class="form-group">
+<label>Phone Number <span>*</span></label>
+<input name="phone" placeholder="+92 300 1234567" required="" type="tel"/>
+<span class="form-error">Please enter a valid phone number</span>
+</div>
+<div class="form-group">
+<label>University <span>*</span></label>
+<input name="university" placeholder="e.g., NED University" required="" type="text"/>
+<span class="form-error">Please enter your university</span>
+</div>
+<div class="form-group">
+<label>Password <span>*</span></label>
+<input name="password" placeholder="Create a strong password" required="" type="password"/>
+<span class="form-error">Password must be at least 6 characters</span>
+</div>
+<div class="form-group">
+<label>Confirm Password <span>*</span></label>
+<input name="confirm-password" placeholder="Confirm your password" required="" type="password"/>
+<span class="form-error">Passwords do not match</span>
+</div>
+<div style="margin-bottom:16px;font-size:0.85rem;color:var(--text-light)">
+<label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+<input required="" style="width:16px;height:16px" type="checkbox"/> I agree to the <a href="terms.html" style="color:var(--primary)">Terms of Service</a> and <a href="privacy.html" style="color:var(--primary)">Privacy Policy</a>
+</label>
+</div>
+<button class="btn btn-primary" type="submit">Create Account</button>
+<div class="auth-error" style="display:none;color:#EF4444;font-size:0.85rem;margin-bottom:8px;padding:8px 12px;background:#FEF2F2;border-radius:6px"></div>
+<div class="success-message">Account created successfully! You can now login.</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+<!-- Property Detail Modal -->
+
+
+
+<script src="api.js"></script>
+<script src="auth.js"></script>
+<script src="search.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

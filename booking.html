@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay - UniNest Pakistan</title>
+    <meta name="description" content="Book verified student housing in Pakistan. Secure booking with instant confirmation.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .booking-page-hero {
+            padding: 120px 0 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+        }
+        .booking-page-hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .booking-page-hero p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+        }
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            padding: 40px 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 24px;
+            position: relative;
+        }
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--border);
+        }
+        .step.active:not(:last-child)::after {
+            background: var(--secondary);
+        }
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .step.active .step-number {
+            background: var(--secondary);
+            color: var(--white);
+        }
+        .step.completed .step-number {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .step-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        .step.active .step-label {
+            color: var(--primary);
+        }
+        .booking-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 40px;
+            padding: 40px 0 80px;
+        }
+        .booking-form-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+        .booking-form-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .booking-form-card h3 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--secondary);
+        }
+        .room-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .room-option:hover, .room-option.selected {
+            border-color: var(--secondary);
+            background: rgba(20, 184, 166, 0.05);
+        }
+        .room-option input[type="radio"] {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--secondary);
+        }
+        .room-option-info { flex: 1; }
+        .room-option-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .room-option-info p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+        .room-option-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .date-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .date-field label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .date-field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--bg);
+        }
+        .duration-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .duration-pill {
+            padding: 10px 20px;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            background: var(--white);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .duration-pill:hover, .duration-pill.active {
+            border-color: var(--secondary);
+            background: rgba(20, 184, 166, 0.1);
+            color: var(--secondary);
+        }
+        .duration-pill .discount {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--secondary);
+            margin-top: 2px;
+        }
+        .meal-plan-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .meal-plan-option:hover, .meal-plan-option.selected {
+            border-color: var(--secondary);
+            background: rgba(20, 184, 166, 0.05);
+        }
+        .meal-plan-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--secondary);
+        }
+        .meal-plan-info { flex: 1; }
+        .meal-plan-info h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .meal-plan-info p {
+            font-size: 0.78rem;
+            color: var(--text-light);
+        }
+        .meal-plan-price {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .addon-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .addon-item:last-child { border-bottom: none; }
+        .addon-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--secondary);
+        }
+        .addon-info { flex: 1; }
+        .addon-info h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .addon-info p {
+            font-size: 0.78rem;
+            color: var(--text-light);
+        }
+        .addon-price {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .form-field label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .form-field label span { color: #EF4444; }
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--bg);
+            transition: var(--transition);
+        }
+        .form-field input:focus, .form-field select:focus {
+            border-color: var(--secondary);
+            background: var(--white);
+        }
+        .form-field.full-width { grid-column: 1 / -1; }
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .payment-method:hover, .payment-method.selected {
+            border-color: var(--secondary);
+            background: rgba(20, 184, 166, 0.05);
+        }
+        .payment-method input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--secondary);
+        }
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .payment-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--primary);
+        }
+        .payment-info { flex: 1; }
+        .payment-info h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .payment-info p {
+            font-size: 0.78rem;
+            color: var(--text-light);
+        }
+        .card-form {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-top: 12px;
+        }
+        .payment-help { font-size: 0.78rem; color: var(--text-light); margin: 6px 0 0; }
+        .payment-method.selected .payment-icon { background: rgba(20,184,166,0.15); }
+        .booking-form-card .form-field.error input, .booking-form-card .form-field.error select { border-color: #EF4444; background: #fff; }
+        .card-form .form-row { margin-bottom: 12px; }
+        .card-form .form-row:last-child { margin-bottom: 0; }
+        .promo-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .promo-row input {
+            flex: 1;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        .promo-row button {
+            padding: 12px 20px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .promo-row button:hover { background: var(--primary-light); }
+        .order-summary {
+            position: sticky;
+            top: 90px;
+        }
+        .order-summary-inner {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+        .summary-property {
+            display: flex;
+            gap: 14px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        .summary-property img {
+            width: 80px;
+            height: 60px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+        }
+        .summary-property-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .summary-property-info p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .summary-line.total {
+            border-top: 2px solid var(--border);
+            margin-top: 10px;
+            padding-top: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .summary-line .discount { color: var(--secondary); }
+        .summary-line .price {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .summary-line.total .price {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+        .place-order-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 20px;
+        }
+        .place-order-btn:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+        .secure-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+        .secure-note svg {
+            width: 16px;
+            height: 16px;
+            color: var(--secondary);
+        }
+        .success-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .success-modal.active { display: flex; }
+        .success-modal-box {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 48px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            animation: modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #D1FAE5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #059669;
+        }
+        .success-modal-box h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+        .success-modal-box p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        .booking-id {
+            background: var(--bg);
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+        .success-modal-box .btn { margin-top: 16px; }
+        @keyframes modalIn {
+            from { transform: scale(0.85) translateY(30px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        @media (max-width: 1024px) {
+            .booking-layout { grid-template-columns: 1fr; }
+            .order-summary { position: static; }
+            .progress-steps { flex-wrap: wrap; gap: 16px; }
+            .step:not(:last-child)::after { display: none; }
+        }
+        @media (max-width: 768px) {
+            .form-row, .date-grid { grid-template-columns: 1fr; }
+            .progress-steps { padding: 24px 16px; }
+            .step { padding: 0 12px; }
+            .booking-page-hero h1 { font-size: 1.6rem; }
+            .success-modal-box { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-overlay"></div>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" class="logo-img" alt="UniNest Pakistan" loading="lazy">
+                <span class="logo-text">UniNest</span>
+            </a>
+            <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="listings.html">Listings</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">
+                        Cities
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </span>
+                    <div class="dropdown-menu">
+                        <a href="city-karachi.html">Karachi</a>
+                        <a href="city-lahore.html">Lahore</a>
+                        <a href="city-islamabad.html">Islamabad</a>
+                    </div>
+                </div>
+                <a href="roommate.html">Roommate Finder</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <div class="nav-buttons nav-buttons-mobile">
+                    <a href="login.html" class="btn btn-outline btn-full">Login</a>
+                    <a href="login.html" class="btn btn-primary btn-full">Register</a>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="booking-page-hero">
+        <div class="container">
+            <h1>Book Your Student Home</h1>
+            <p>Complete your booking in just a few simple steps</p>
+        </div>
+    </section>
+
+    <div class="progress-steps">
+        <div class="step completed">
+            <div class="step-number">1</div>
+            <span class="step-label">Property</span>
+        </div>
+        <div class="step active">
+            <div class="step-number">2</div>
+            <span class="step-label">Details</span>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <span class="step-label">Payment</span>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <span class="step-label">Confirmed</span>
+        </div>
+    </div>
+
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="booking-layout">
+                <div class="booking-main">
+                    <div class="booking-form-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            Select Room Type
+                        </h3>
+                        <div class="room-options" id="room-options">
+                            <label class="room-option selected">
+                                <input type="radio" name="room" value="double" checked data-price="12000">
+                                <div class="room-option-info">
+                                    <h4>Double Sharing Room</h4>
+                                    <p>2 beds, shared bathroom, AC, WiFi</p>
+                                </div>
+                                <div class="room-option-price">PKR 12,000</div>
+                            </label>
+                            <label class="room-option">
+                                <input type="radio" name="room" value="single" data-price="15000">
+                                <div class="room-option-info">
+                                    <h4>Single Room (AC)</h4>
+                                    <p>Private room, attached bath, AC, WiFi</p>
+                                </div>
+                                <div class="room-option-price">PKR 15,000</div>
+                            </label>
+                            <label class="room-option">
+                                <input type="radio" name="room" value="triple" data-price="8500">
+                                <div class="room-option-info">
+                                    <h4>Triple Sharing Room</h4>
+                                    <p>3 beds, shared bathroom, fan, WiFi</p>
+                                </div>
+                                <div class="room-option-price">PKR 8,500</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="booking-form-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Select Dates & Duration
+                        </h3>
+                        <div class="date-grid">
+                            <div class="date-field">
+                                <label for="checkin-date">Move-in Date</label>
+                                <input type="date" id="checkin-date">
+                            </div>
+                            <div class="date-field">
+                                <label for="checkout-date">Move-out Date</label>
+                                <input type="date" id="checkout-date">
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label style="display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 10px;">Duration</label>
+                            <div class="duration-pills">
+                                <button class="duration-pill active" data-months="1">1 Month</button>
+                                <button class="duration-pill" data-months="3">3 Months<span class="discount">5% off</span></button>
+                                <button class="duration-pill" data-months="6">6 Months<span class="discount">10% off</span></button>
+                                <button class="duration-pill" data-months="12">12 Months<span class="discount">15% off</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-form-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                            Meal Plan
+                        </h3>
+                        <div class="meal-plans">
+                            <label class="meal-plan-option selected">
+                                <input type="radio" name="meal" value="0" checked data-price="0">
+                                <div class="meal-plan-info">
+                                    <h5>No Meals</h5>
+                                    <p>Cooking facilities available</p>
+                                </div>
+                                <div class="meal-plan-price">Free</div>
+                            </label>
+                            <label class="meal-plan-option">
+                                <input type="radio" name="meal" value="3000" data-price="3000">
+                                <div class="meal-plan-info">
+                                    <h5>Breakfast Only</h5>
+                                    <p>Daily breakfast included</p>
+                                </div>
+                                <div class="meal-plan-price">+PKR 3,000/mo</div>
+                            </label>
+                            <label class="meal-plan-option">
+                                <input type="radio" name="meal" value="5000" data-price="5000">
+                                <div class="meal-plan-info">
+                                    <h5>Half Board (2 Meals)</h5>
+                                    <p>Breakfast + Dinner daily</p>
+                                </div>
+                                <div class="meal-plan-price">+PKR 5,000/mo</div>
+                            </label>
+                            <label class="meal-plan-option">
+                                <input type="radio" name="meal" value="7000" data-price="7000">
+                                <div class="meal-plan-info">
+                                    <h5>Full Board (3 Meals)</h5>
+                                    <p>Breakfast + Lunch + Dinner</p>
+                                </div>
+                                <div class="meal-plan-price">+PKR 7,000/mo</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="booking-form-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Optional Add-ons
+                        </h3>
+                        <div class="addons-list">
+                            <label class="addon-item">
+                                <input type="checkbox" data-price="2000">
+                                <div class="addon-info">
+                                    <h5>Parking Space</h5>
+                                    <p>Dedicated parking for your vehicle</p>
+                                </div>
+                                <div class="addon-price">+PKR 2,000/mo</div>
+                            </label>
+                            <label class="addon-item">
+                                <input type="checkbox" data-price="1500">
+                                <div class="addon-info">
+                                    <h5>Laundry Service</h5>
+                                    <p>Weekly laundry pickup & delivery</p>
+                                </div>
+                                <div class="addon-price">+PKR 1,500/mo</div>
+                            </label>
+                            <label class="addon-item">
+                                <input type="checkbox" data-price="1000">
+                                <div class="addon-info">
+                                    <h5>Extra Storage</h5>
+                                    <p>Additional storage locker</p>
+                                </div>
+                                <div class="addon-price">+PKR 1,000/mo</div>
+                            </label>
+                            <label class="addon-item">
+                                <input type="checkbox" data-price="800">
+                                <div class="addon-info">
+                                    <h5>Extra Data Package</h5>
+                                    <p>50GB additional high-speed internet</p>
+                                </div>
+                                <div class="addon-price">+PKR 800/mo</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="booking-form-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            Personal Information
+                        </h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>Full Name <span>*</span></label>
+                                <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" autocomplete="name" required><span class="form-error">Please enter your full name</span>
+                            </div>
+                            <div class="form-field">
+                                <label>Phone Number <span>*</span></label>
+                                <input type="tel" id="phone-number" name="phone" placeholder="+92 300 1234567" autocomplete="tel" required><span class="form-error">Please enter a valid phone number</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>Email Address <span>*</span></label>
+                                <input type="email" id="email-address" name="email" placeholder="your@email.com" autocomplete="email" required><span class="form-error">Please enter a valid email</span>
+                            </div>
+                            <div class="form-field">
+                                <label>University <span>*</span></label>
+                                <select id="university" name="university" required>
+                                    <option value="">Select University</option>
+                                    <option value="ned">NED University</option>
+                                    <option value="fast">FAST-NUCES</option>
+                                    <option value="ku">Karachi University</option>
+                                    <option value="lums">LUMS</option>
+                                    <option value="ucp">UCP</option>
+                                    <option value="nust">NUST</option>
+                                    <option value="comsats">COMSATS</option>
+                                    <option value="other">Other</option>
+                                </select><span class="form-error">Please select your university</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field full-width">
+                                <label>CNIC Number <span>*</span></label>
+                                <input type="text" id="cnic-number" name="cnic" placeholder="XXXXX-XXXXXXX-X" inputmode="numeric" required><span class="form-error">Please enter CNIC number</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field full-width">
+                                <label>Special Requests (Optional)</label>
+                                <input type="text" id="special-requests" name="special_requests" placeholder="Any special requirements...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-form-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            Payment Method
+                        </h3>
+                        <div class="payment-methods">
+                            <label class="payment-method selected">
+                                <input type="radio" name="payment" value="card" checked>
+                                <div class="payment-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                                </div>
+                                <div class="payment-info">
+                                    <h5>Credit / Debit Card</h5>
+                                    <p>Visa, Mastercard, PayPak</p>
+                                </div>
+                            </label>
+                            <div class="card-form" id="card-form">
+                                <div class="form-row">
+                                    <div class="form-field full-width">
+                                        <label>Card Number</label>
+                                        <input type="text" id="card-number" name="card_number" placeholder="1234 5678 9012 3456" inputmode="numeric" autocomplete="cc-number">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label>Expiry Date</label>
+                                        <input type="text" id="card-expiry" name="card_expiry" placeholder="MM/YY" autocomplete="cc-exp">
+                                    </div>
+                                    <div class="form-field">
+                                        <label>CVV</label>
+                                        <input type="password" id="card-cvv" name="card_cvv" placeholder="123" inputmode="numeric" autocomplete="cc-csc">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-field full-width">
+                                        <label>Cardholder Name</label>
+                                        <input type="text" id="cardholder-name" name="cardholder_name" placeholder="Name on card" autocomplete="cc-name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="payment-method">
+                                <input type="radio" name="payment" value="easypaisa">
+                                <div class="payment-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                                </div>
+                                <div class="payment-info">
+                                    <h5>EasyPaisa / JazzCash</h5>
+                                    <p>Pay via mobile wallet</p>
+                                </div>
+                            </label>
+                            <div class="card-form payment-extra" id="wallet-form" style="display:none;">
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label>Wallet Number <span>*</span></label>
+                                        <input type="tel" id="wallet-number" placeholder="03XX XXXXXXX" inputmode="tel">
+                                        <span class="form-error">Please enter wallet number</span>
+                                    </div>
+                                    <div class="form-field">
+                                        <label>Transaction ID <span>*</span></label>
+                                        <input type="text" id="wallet-transaction" placeholder="e.g. EP123456789">
+                                        <span class="form-error">Please enter transaction ID</span>
+                                    </div>
+                                </div>
+                                <p class="payment-help">Pay from EasyPaisa/JazzCash, then enter your transaction ID for verification.</p>
+                            </div>
+
+                            <label class="payment-method">
+                                <input type="radio" name="payment" value="bank">
+                                <div class="payment-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-4 7 4M4 10v11M20 10v11"/></svg>
+                                </div>
+                                <div class="payment-info">
+                                    <h5>Bank Transfer</h5>
+                                    <p>Direct bank deposit</p>
+                                </div>
+                            </label>
+                            <div class="card-form payment-extra" id="bank-form" style="display:none;">
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label>Bank Name <span>*</span></label>
+                                        <input type="text" id="bank-name" placeholder="e.g. HBL / Meezan / UBL">
+                                        <span class="form-error">Please enter bank name</span>
+                                    </div>
+                                    <div class="form-field">
+                                        <label>Reference / Slip No. <span>*</span></label>
+                                        <input type="text" id="bank-reference" placeholder="Bank transfer reference">
+                                        <span class="form-error">Please enter reference number</span>
+                                    </div>
+                                </div>
+                                <p class="payment-help">Transfer amount first, then enter bank reference so admin can verify the booking.</p>
+                            </div>
+                        </div>
+
+                        <div class="promo-row">
+                            <input type="text" placeholder="Enter promo code (e.g., UNINEST10)" id="promo-input">
+                            <button type="button" id="apply-promo">Apply</button>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="order-summary">
+                    <div class="order-summary-inner">
+                        <div class="booking-warning" id="booking-warning" style="display:none; margin-bottom:12px; padding:10px 12px; border-radius:10px; background:#FEF2F2; color:#991B1B; font-size:0.9rem;">Property not found. Showing default booking option.</div>
+                        <div class="summary-property" id="summary-property">
+                            <img src="images/property-1.jpg" alt="Property" id="summary-img" loading="lazy">
+                            <div class="summary-property-info">
+                                <h4 id="summary-title">Al-Noor Boys Hostel</h4>
+                                <p id="summary-location">Gulshan-e-Iqbal, Karachi</p>
+                            </div>
+                        </div>
+
+                        <div class="summary-line">
+                            <span>Room Rent (1 month)</span>
+                            <span class="price" id="summary-room">PKR 12,000</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Duration</span>
+                            <span class="price" id="summary-duration">1 Month</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Meal Plan</span>
+                            <span class="price" id="summary-meal">PKR 0</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Add-ons</span>
+                            <span class="price" id="summary-addons">PKR 0</span>
+                        </div>
+                        <div class="summary-line" id="discount-line" style="display: none;">
+                            <span>Duration Discount</span>
+                            <span class="discount" id="summary-discount">-PKR 0</span>
+                        </div>
+                        <div class="summary-line" id="promo-line" style="display: none;">
+                            <span>Promo Discount</span>
+                            <span class="discount" id="summary-promo">-PKR 0</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Total Amount</span>
+                            <span class="price" id="summary-total">PKR 12,000</span>
+                        </div>
+
+                        <button class="place-order-btn" id="place-order-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px;"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Confirm Booking
+                        </button>
+
+                        <div class="secure-note">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Secure SSL Encrypted Payment
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <div class="success-modal" id="success-modal" role="dialog" aria-modal="true" aria-label="Booking success">
+        <div class="success-modal-box">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your booking has been successfully placed.</p>
+            <p style="font-size: 0.85rem; color: var(--text-light);">Booking Reference</p>
+            <div class="booking-id" id="booking-id">UNI-784932</div>
+            <p style="font-size: 0.85rem; color: var(--text-light);">A confirmation email has been sent to your email address.</p>
+            <a href="dashboard.html" class="btn btn-primary" style="margin-top: 8px;">Go to Dashboard</a>
+            <a href="index.html" class="btn btn-outline" style="margin-top: 8px; margin-left: 8px;">Back to Home</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" class="logo-img" alt="UniNest Pakistan" loading="lazy">
+                        <span class="logo-text">UniNest</span>
+                    </a>
+                    <p>Pakistan's most trusted student housing platform. We help thousands of students find their perfect home away from home every semester.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/uninestpk" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                        <a href="https://www.instagram.com/uninestpk" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="https://twitter.com/uninestpk" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 8v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/uninestpk" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Browse Listings</a></li>
+                        <li><a href="roommate.html">Roommate Finder</a></li>
+                        <li><a href="reviews.html">Student Reviews</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Cities</h4>
+                    <ul class="footer-links">
+                        <li><a href="city-karachi.html">Karachi</a></li>
+                        <li><a href="city-lahore.html">Lahore</a></li>
+                        <li><a href="city-islamabad.html">Islamabad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size:0.9rem;color:rgba(255,255,255,0.7);margin-bottom:16px">Subscribe for new listings and student housing tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <ul class="footer-contact" style="margin-top:20px">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            support@uninest.pk
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            +92 300 1234567
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 UniNest Pakistan. All rights reserved.</p>
+                <p>Made with <span style="color:#EF4444">&#10084;</span> for Pakistani Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </div>
+
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+
+    <button id="chatbot-toggle" aria-label="Open UniNest chatbot" title="UniNest Assistant">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </button>
+    <div id="chatbot-box">
+        <div class="chatbot-header"><span>UniNest Assistant</span><button id="chatbot-close" aria-label="Close chatbot">&times;</button></div>
+        <div id="chatbot-messages">
+            <div class="chat-msg chat-bot">Assalamu Alaikum! Main UniNest Assistant hoon. Poochein: city name, hostel, roommate, price, ya contact</div>
+        </div>
+        <div class="chatbot-input-row">
+            <input type="text" id="chatbot-input" placeholder="Apna sawal likhein...">
+            <button id="chatbot-send" aria-label="Send chatbot message">Send</button>
+        </div>
+    </div>
+
+    <a id="whatsapp-btn" href="https://wa.me/923001234567?text=Hi UniNest! I need help finding student housing." target="_blank" title="Chat on WhatsApp">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.133.558 4.133 1.532 5.874L0 24l6.321-1.503A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.57-.49-5.064-1.345l-.363-.213-3.752.893.928-3.656-.236-.378A9.957 9.957 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    </a>
+
+    <script src="api.js"></script>
+    <script src="auth.js"></script>
+    <script src="api-client.js"></script>
+    <script src="search.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        try { await Search.init(); } catch(e) { console.warn("Search init failed"); }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyId = parseInt(urlParams.get('id')) || 1;
+
+        const properties = await API.getProperties() || [];
+        let property = properties.find(function(p) { return p.id === propertyId; });
+
+        // Agar id galat ho ya data na mile to page break nahi hoga
+        if (!property && properties.length > 0) {
+            property = properties[0];
+            const warningBox = document.getElementById('booking-warning');
+            if (warningBox) warningBox.style.display = 'block';
+        }
+
+        if (property) {
+            document.getElementById('summary-title').textContent = property.title;
+            document.getElementById('summary-location').textContent = property.area + ', ' + property.city.charAt(0).toUpperCase() + property.city.slice(1);
+            document.getElementById('summary-img').src = property.image;
+            document.getElementById('summary-img').alt = property.title;
+            document.title = 'Book ' + property.title + ' - UniNest Pakistan';
+        }
+
+        const today = new Date();
+        const nextMonth = new Date(today);
+        nextMonth.setMonth(today.getMonth() + 1);
+        document.getElementById('checkin-date').value = today.toISOString().split('T')[0];
+        document.getElementById('checkout-date').value = nextMonth.toISOString().split('T')[0];
+
+        let state = {
+            roomPrice: property ? property.price : 12000,
+            months: 1,
+            mealPrice: 0,
+            addons: 0,
+            discount: 0,
+            promoDiscount: 0
+        };
+
+        const discounts = { 1: 0, 3: 0.05, 6: 0.10, 12: 0.15 };
+
+        function calculateTotal() {
+            const subtotal = (state.roomPrice + state.mealPrice + state.addons) * state.months;
+            state.discount = subtotal * discounts[state.months];
+            const afterDiscount = subtotal - state.discount - state.promoDiscount;
+            return Math.max(0, afterDiscount);
+        }
+
+        function updateSummary() {
+            const total = calculateTotal();
+            document.getElementById('summary-room').textContent = 'PKR ' + state.roomPrice.toLocaleString();
+            document.getElementById('summary-duration').textContent = state.months + ' Month' + (state.months > 1 ? 's' : '');
+            document.getElementById('summary-meal').textContent = 'PKR ' + state.mealPrice.toLocaleString() + '/mo';
+            document.getElementById('summary-addons').textContent = 'PKR ' + state.addons.toLocaleString() + '/mo';
+            document.getElementById('summary-total').textContent = 'PKR ' + total.toLocaleString();
+
+            if (state.discount > 0) {
+                document.getElementById('discount-line').style.display = 'flex';
+                document.getElementById('summary-discount').textContent = '-PKR ' + state.discount.toLocaleString();
+            } else {
+                document.getElementById('discount-line').style.display = 'none';
+            }
+
+            if (state.promoDiscount > 0) {
+                document.getElementById('promo-line').style.display = 'flex';
+                document.getElementById('summary-promo').textContent = '-PKR ' + state.promoDiscount.toLocaleString();
+            } else {
+                document.getElementById('promo-line').style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('.room-option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                document.querySelectorAll('.room-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input').checked = true;
+                state.roomPrice = parseInt(this.querySelector('input').dataset.price);
+                updateSummary();
+            });
+        });
+
+        document.querySelectorAll('.duration-pill').forEach(pill => {
+            pill.addEventListener('click', function() {
+                document.querySelectorAll('.duration-pill').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                state.months = parseInt(this.dataset.months);
+
+                const checkin = new Date(document.getElementById('checkin-date').value);
+                const checkout = new Date(checkin);
+                checkout.setMonth(checkin.getMonth() + state.months);
+                document.getElementById('checkout-date').value = checkout.toISOString().split('T')[0];
+
+                updateSummary();
+            });
+        });
+
+        document.querySelectorAll('.meal-plan-option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                document.querySelectorAll('.meal-plan-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input').checked = true;
+                state.mealPrice = parseInt(this.querySelector('input').dataset.price);
+                updateSummary();
+            });
+        });
+
+        document.querySelectorAll('.addon-item input').forEach(cb => {
+            cb.addEventListener('change', function() {
+                state.addons = 0;
+                document.querySelectorAll('.addon-item input:checked').forEach(c => {
+                    state.addons += parseInt(c.dataset.price);
+                });
+                updateSummary();
+            });
+        });
+
+        document.querySelectorAll('.payment-method').forEach(pm => {
+            pm.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(p => p.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input').checked = true;
+
+                const method = this.querySelector('input').value;
+                document.querySelectorAll('.payment-extra, #card-form').forEach(el => { if (el) el.style.display = 'none'; });
+                const activeForm = method === 'card' ? document.getElementById('card-form') : method === 'easypaisa' ? document.getElementById('wallet-form') : document.getElementById('bank-form');
+                if (activeForm) activeForm.style.display = 'block';
+            });
+        });
+
+        document.getElementById('apply-promo').addEventListener('click', function() {
+            const code = document.getElementById('promo-input').value.trim().toUpperCase();
+            if (code === 'UNINEST10') {
+                state.promoDiscount = calculateTotal() * 0.10;
+                alert('Promo code applied! 10% discount added.');
+                updateSummary();
+            } else if (code === 'STUDENT20') {
+                state.promoDiscount = calculateTotal() * 0.20;
+                alert('Promo code applied! 20% discount added.');
+                updateSummary();
+            } else if (code) {
+                alert('Invalid promo code. Try UNINEST10 or STUDENT20');
+            }
+        });
+
+        function setFieldError(input, hasError) {
+            if (!input) return;
+            const field = input.closest('.form-field');
+            if (field) field.classList.toggle('error', !!hasError);
+        }
+        function value(id) {
+            const el = document.getElementById(id);
+            return el ? el.value.trim() : '';
+        }
+        function validateBooking() {
+            let ok = true;
+            const checks = [
+                ['full-name', value('full-name').length >= 3],
+                ['phone-number', /^\+?92|^03/.test(value('phone-number').replace(/\s+/g,'')) && value('phone-number').replace(/\D/g,'').length >= 10],
+                ['email-address', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value('email-address'))],
+                ['university', value('university') !== ''],
+                ['cnic-number', value('cnic-number').replace(/\D/g,'').length >= 13],
+                ['checkin-date', value('checkin-date') !== ''],
+                ['checkout-date', value('checkout-date') !== '']
+            ];
+            checks.forEach(([id, pass]) => { setFieldError(document.getElementById(id), !pass); if (!pass) ok = false; });
+
+            const method = document.querySelector('input[name="payment"]:checked')?.value || '';
+            if (method === 'card') {
+                const cardDigits = value('card-number').replace(/\D/g, '');
+                const expiryOk = /^(0[1-9]|1[0-2])\/[0-9]{2}$/.test(value('card-expiry'));
+                const cvvOk = /^[0-9]{3,4}$/.test(value('card-cvv'));
+                const nameOk = value('cardholder-name').length >= 3;
+                [['card-number', cardDigits.length >= 13], ['card-expiry', expiryOk], ['card-cvv', cvvOk], ['cardholder-name', nameOk]].forEach(([id, pass]) => { setFieldError(document.getElementById(id), !pass); if (!pass) ok = false; });
+            } else if (method === 'easypaisa') {
+                [['wallet-number', value('wallet-number').replace(/\D/g,'').length >= 11], ['wallet-transaction', value('wallet-transaction').length >= 5]].forEach(([id, pass]) => { setFieldError(document.getElementById(id), !pass); if (!pass) ok = false; });
+            } else if (method === 'bank') {
+                [['bank-name', value('bank-name').length >= 2], ['bank-reference', value('bank-reference').length >= 4]].forEach(([id, pass]) => { setFieldError(document.getElementById(id), !pass); if (!pass) ok = false; });
+            } else {
+                ok = false;
+            }
+            if (!ok) {
+                alert('Please complete personal information and payment details before confirming booking.');
+                const firstError = document.querySelector('.form-field.error input, .form-field.error select');
+                if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return ok;
+        }
+        function currentRoomLabel() {
+            const selected = document.querySelector('.room-option.selected .room-option-info h4');
+            return selected ? selected.textContent.trim() : 'Selected Room';
+        }
+        function paymentPayload(method) {
+            if (method === 'card') {
+                const digits = value('card-number').replace(/\D/g, '');
+                return { payment_last4: digits.slice(-4), payment_reference: 'CARD-' + digits.slice(-4), payment_account: value('cardholder-name') };
+            }
+            if (method === 'easypaisa') {
+                return { payment_last4: value('wallet-number').replace(/\D/g, '').slice(-4), payment_reference: value('wallet-transaction'), payment_account: value('wallet-number') };
+            }
+            return { payment_last4: '', payment_reference: value('bank-reference'), payment_account: value('bank-name') };
+        }
+        document.getElementById('place-order-btn').addEventListener('click', async function() {
+            if (!validateBooking()) return;
+            const btn = this;
+            if (btn.disabled) return;
+            btn.disabled = true;
+            const original = btn.innerHTML;
+            btn.textContent = 'Processing payment...';
+            const method = document.querySelector('input[name="payment"]:checked')?.value || 'card';
+            const payload = Object.assign({
+                property_id: property ? property.id : null,
+                property_title: property ? property.title : document.getElementById('summary-title').textContent.trim(),
+                room_type: currentRoomLabel(),
+                room_price: state.roomPrice,
+                months: state.months,
+                meal_price: state.mealPrice,
+                addons_price: state.addons,
+                discount: Math.round(state.discount || 0),
+                promo_discount: Math.round(state.promoDiscount || 0),
+                total: Math.round(calculateTotal()),
+                checkin_date: value('checkin-date'),
+                checkout_date: value('checkout-date'),
+                full_name: value('full-name'),
+                phone: value('phone-number'),
+                email: value('email-address'),
+                university: value('university'),
+                cnic: value('cnic-number'),
+                special_requests: value('special-requests'),
+                payment_method: method,
+                payment_status: 'submitted_for_verification'
+            }, paymentPayload(method));
+            try {
+                const headers = { 'Content-Type': 'application/json' };
+                const token = localStorage.getItem('uninest_token') || '';
+                if (token) headers.Authorization = 'Bearer ' + token;
+                const response = await fetch('/api/bookings', { method: 'POST', headers, body: JSON.stringify(payload) });
+                const json = await response.json().catch(() => ({}));
+                if (!response.ok || json.ok === false) throw new Error(json.message || 'Booking failed');
+                try {
+                    const rows = JSON.parse(localStorage.getItem('uninest-bookings') || '[]');
+                    rows.unshift(Object.assign({}, payload, { id: json.id, booking_code: json.booking_code, status: 'payment_verification_pending', created_at: new Date().toISOString() }));
+                    localStorage.setItem('uninest-bookings', JSON.stringify(rows.slice(0, 50)));
+                } catch {}
+                document.getElementById('booking-id').textContent = json.booking_code || ('UNI-' + Math.floor(100000 + Math.random() * 900000));
+                document.getElementById('success-modal').classList.add('active');
+            } catch (err) {
+                alert(err.message || 'Booking could not be saved. Please try again.');
+            } finally {
+                btn.innerHTML = original;
+                btn.disabled = false;
+            }
+        });
+
+        document.getElementById('success-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        if (property) {
+            const firstRoomInput = document.querySelector('.room-option input[data-price]');
+            if (firstRoomInput) {
+                firstRoomInput.dataset.price = property.price;
+                state.roomPrice = property.price;
+                const priceEl = firstRoomInput.closest('.room-option')?.querySelector('.room-option-price');
+                if (priceEl) priceEl.textContent = 'PKR ' + property.price.toLocaleString() + '/mo';
+            }
+        }
+
+        const qpRoom = parseInt(urlParams.get('room') || '');
+        const qpMonths = parseInt(urlParams.get('months') || '');
+        const qpMeal = parseInt(urlParams.get('meal') || '');
+        const qpMovein = urlParams.get('movein');
+        if (!Number.isNaN(qpRoom) && qpRoom > 0) {
+            state.roomPrice = qpRoom;
+            const selected = document.querySelector('.room-option.selected input');
+            if (selected) selected.dataset.price = qpRoom;
+            const priceEl = document.querySelector('.room-option.selected .room-option-price');
+            if (priceEl) priceEl.textContent = 'PKR ' + qpRoom.toLocaleString() + '/mo';
+        }
+        if (!Number.isNaN(qpMonths) && [1,3,6,12].includes(qpMonths)) {
+            state.months = qpMonths;
+            document.querySelectorAll('.duration-pill').forEach(p => p.classList.toggle('active', parseInt(p.dataset.months) === qpMonths));
+        }
+        if (!Number.isNaN(qpMeal)) {
+            const meal = document.querySelector('.meal-plan-option input[data-price="' + qpMeal + '"]');
+            if (meal) {
+                document.querySelectorAll('.meal-plan-option').forEach(o => o.classList.remove('selected'));
+                meal.checked = true;
+                meal.closest('.meal-plan-option').classList.add('selected');
+                state.mealPrice = qpMeal;
+            }
+        }
+        if (qpMovein) document.getElementById('checkin-date').value = qpMovein;
+        if (state.months) {
+            const checkin = new Date(document.getElementById('checkin-date').value);
+            if (!Number.isNaN(checkin.getTime())) {
+                const checkout = new Date(checkin);
+                checkout.setMonth(checkin.getMonth() + state.months);
+                document.getElementById('checkout-date').value = checkout.toISOString().split('T')[0];
+            }
+        }
+
+        updateSummary();
+    });
+    </script>
+</body>
+</html>

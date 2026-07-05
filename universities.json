@@ -1,0 +1,16 @@
+[
+  {"name":"NED University","city":"karachi","area":"Gulshan-e-Iqbal","students":15000},
+  {"name":"FAST-NUCES Karachi","city":"karachi","area":"Karachi Campus","students":8000},
+  {"name":"Karachi University","city":"karachi","area":"University Road","students":25000},
+  {"name":"IBA Karachi","city":"karachi","area":"University Road","students":4000},
+  {"name":"Dow University","city":"karachi","area":"OJHA Campus","students":6000},
+  {"name":"LUMS","city":"lahore","area":"DHA","students":5000},
+  {"name":"Punjab University","city":"lahore","area":"Quaid-e-Azam Campus","students":30000},
+  {"name":"UET Lahore","city":"lahore","area":"G.T. Road","students":12000},
+  {"name":"UCP","city":"lahore","area":"Johar Town","students":10000},
+  {"name":"NUST","city":"islamabad","area":"H-12","students":9000},
+  {"name":"COMSATS Islamabad","city":"islamabad","area":"Park Road","students":11000},
+  {"name":"FAST-NUCES Islamabad","city":"islamabad","area":"F-8","students":5000},
+  {"name":"Quaid-i-Azam University","city":"islamabad","area":"Islamabad","students":14000},
+  {"name":"Air University","city":"islamabad","area":"E-9","students":7000}
+]

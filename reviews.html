@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read real student reviews and ratings for verified hostels and student accommodation across Pakistan.">
+    <title>Student Reviews - UniNest Pakistan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mobile-overlay"></div>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><img src="images/logo.png" class="logo-img" alt="UniNest Pakistan" loading="lazy"><span class="logo-text">UniNest</span></a>
+            <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            <div class="nav-links">
+                <a href="index.html">Home</a><a href="listings.html">Listings</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Cities <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+                    <div class="dropdown-menu"><a href="city-karachi.html">Karachi</a><a href="city-lahore.html">Lahore</a><a href="city-islamabad.html">Islamabad</a></div>
+                </div>
+                <a href="roommate.html">Roommate Finder</a>
+                <a href="reviews.html" class="active">Reviews</a>
+                <a href="about.html">About</a><a href="contact.html">Contact</a>
+                <div class="nav-buttons nav-buttons-mobile">
+                    <a href="login.html" class="btn btn-outline btn-full">Login</a>
+                    <a href="login.html" class="btn btn-primary btn-full">Register</a>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Student Reviews</h1>
+            <p>Honest feedback from students who found housing through UniNest</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <!-- Rating Overview -->
+            <div class="rating-overview reveal">
+                <div class="rating-big">
+                    <div class="rating-big-number">4.8</div>
+                    <div class="rating-big-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p>Based on 256 reviews</p>
+                </div>
+                <div class="rating-bars">
+                    <div class="rating-bar"><span class="rating-bar-label">5 Star</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:78%"></div></div><span class="rating-bar-count">198</span></div>
+                    <div class="rating-bar"><span class="rating-bar-label">4 Star</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:15%"></div></div><span class="rating-bar-count">40</span></div>
+                    <div class="rating-bar"><span class="rating-bar-label">3 Star</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:5%"></div></div><span class="rating-bar-count">12</span></div>
+                    <div class="rating-bar"><span class="rating-bar-label">2 Star</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1.5%"></div></div><span class="rating-bar-count">4</span></div>
+                    <div class="rating-bar"><span class="rating-bar-label">1 Star</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0.5%"></div></div><span class="rating-bar-count">2</span></div>
+                </div>
+            </div>
+
+            <!-- Review Filters -->
+            <div class="filters-row" style="margin-bottom:32px">
+                <div class="filter-group">
+                    <label>Filter by City</label>
+                    <select id="review-city">
+                        <option value="all">All Cities</option>
+                        <option value="karachi">Karachi</option>
+                        <option value="lahore">Lahore</option>
+                        <option value="islamabad">Islamabad</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Minimum Rating</label>
+                    <select id="review-rating">
+                        <option value="all">All Ratings</option>
+                        <option value="5">5 Stars</option>
+                        <option value="4">4+ Stars</option>
+                        <option value="3">3+ Stars</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="reviews-list">
+                <div class="review-card" data-city="karachi" data-rating="5">
+                    <div class="review-header">
+                        <div class="review-author">
+                            <img src="images/roommate-1.jpg" alt="Ahmed Khan" loading="lazy">
+                            <div class="review-author-info"><h4>Ahmed Khan</h4><p>NED University</p></div>
+                        </div>
+                        <div class="review-meta">
+                            <span class="reverified-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Stay</span>
+                            <div class="review-date">Feb 15, 2026</div>
+                        </div>
+                    </div>
+                    <div class="review-property"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Al-Noor Boys Hostel, Karachi</div>
+                    <div class="stars" style="margin-bottom:10px">
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"Amazing hostel experience! The WiFi is fast, rooms are clean, and the location is perfect for NED students. Warden is very cooperative. The meals included in the price are actually good quality. Highly recommended for any student looking for affordable housing in Karachi."</p>
+                    <div class="review-actions">
+                        <button class="helpful-btn" aria-label="Mark as helpful"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>Helpful (<span class="helpful-count">12</span>)</button>
+                    </div>
+                </div>
+
+                <div class="review-card" data-city="islamabad" data-rating="5">
+                    <div class="review-header">
+                        <div class="review-author">
+                            <img src="images/roommate-2.jpg" alt="Ayesha Malik" loading="lazy">
+                            <div class="review-author-info"><h4>Ayesha Malik</h4><p>NUST</p></div>
+                        </div>
+                        <div class="review-meta">
+                            <span class="reverified-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Stay</span>
+                            <div class="review-date">Jan 28, 2026</div>
+                        </div>
+                    </div>
+                    <div class="review-property"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Safe Haven Girls Hostel, Islamabad</div>
+                    <div class="stars" style="margin-bottom:10px">
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"Best decision I made was choosing Safe Haven! As a girl living away from home for the first time, security was my biggest concern. This hostel has 24/7 security, CCTV, and biometric entry. The rooms are well-maintained and the study room is a bonus during exam season!"</p>
+                    <div class="review-actions">
+                        <button class="helpful-btn" aria-label="Mark as helpful"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>Helpful (<span class="helpful-count">24</span>)</button>
+                    </div>
+                </div>
+
+                <div class="review-card" data-city="lahore" data-rating="4">
+                    <div class="review-header">
+                        <div class="review-author">
+                            <img src="images/roommate-3.jpg" alt="Usman Ali" loading="lazy">
+                            <div class="review-author-info"><h4>Usman Ali</h4><p>LUMS</p></div>
+                        </div>
+                        <div class="review-meta">
+                            <span class="reverified-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Stay</span>
+                            <div class="review-date">Mar 5, 2026</div>
+                        </div>
+                    </div>
+                    <div class="review-property"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Scholar's Co-Living Space, Lahore</div>
+                    <div class="stars" style="margin-bottom:10px">
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"Great co-living space near LUMS. The common area is perfect for group study sessions. Only giving 4 stars because the laundry room gets crowded on weekends. Otherwise, excellent value for money and the management is very responsive."</p>
+                    <div class="review-actions">
+                        <button class="helpful-btn" aria-label="Mark as helpful"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>Helpful (<span class="helpful-count">8</span>)</button>
+                    </div>
+                </div>
+
+                <div class="review-card" data-city="karachi" data-rating="5">
+                    <div class="review-header">
+                        <div class="review-author">
+                            <img src="images/roommate-5.jpg" alt="Bilal Ahmad" loading="lazy">
+                            <div class="review-author-info"><h4>Bilal Ahmad</h4><p>Karachi University</p></div>
+                        </div>
+                        <div class="review-meta">
+                            <span class="reverified-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Stay</span>
+                            <div class="review-date">Feb 20, 2026</div>
+                        </div>
+                    </div>
+                    <div class="review-property"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Student Budget Hostel, Karachi</div>
+                    <div class="stars" style="margin-bottom:10px">
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"Best budget hostel in Karachi! At PKR 8,500 per month including 3 meals, it's a steal. The location near KU is super convenient. Transport is easily available. Perfect for students who want to save money without compromising on basic comforts."</p>
+                    <div class="review-actions">
+                        <button class="helpful-btn" aria-label="Mark as helpful"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>Helpful (<span class="helpful-count">18</span>)</button>
+                    </div>
+                </div>
+
+                <div class="review-card" data-city="lahore" data-rating="5">
+                    <div class="review-header">
+                        <div class="review-author">
+                            <img src="images/roommate-4.jpg" alt="Fatima Zahra" loading="lazy">
+                            <div class="review-author-info"><h4>Fatima Zahra</h4><p>KEMU</p></div>
+                        </div>
+                        <div class="review-meta">
+                            <span class="reverified-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Stay</span>
+                            <div class="review-date">Mar 10, 2026</div>
+                        </div>
+                    </div>
+                    <div class="review-property"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>The Scholar Residences, Lahore</div>
+                    <div class="stars" style="margin-bottom:10px">
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"Found 3 amazing roommates through the roommate finder feature! We're all medical students at KEMU and share this beautiful apartment. The compatibility matching worked perfectly - we have similar study schedules and get along great."</p>
+                    <div class="review-actions">
+                        <button class="helpful-btn" aria-label="Mark as helpful"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>Helpful (<span class="helpful-count">31</span>)</button>
+                    </div>
+                </div>
+
+                <div class="review-card" data-city="islamabad" data-rating="4">
+                    <div class="review-header">
+                        <div class="review-author">
+                            <img src="images/roommate-6.jpg" alt="Zara Hassan" loading="lazy">
+                            <div class="review-author-info"><h4>Zara Hassan</h4><p>COMSATS Islamabad</p></div>
+                        </div>
+                        <div class="review-meta">
+                            <span class="reverified-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Stay</span>
+                            <div class="review-date">Jan 15, 2026</div>
+                        </div>
+                    </div>
+                    <div class="review-property"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Premium Private Suite, Islamabad</div>
+                    <div class="stars" style="margin-bottom:10px">
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-text">"The private suite is absolutely gorgeous! Having my own space with a kitchenette and attached bathroom is worth every rupee. The building has a gym and rooftop terrace. Minor issue with water pressure sometimes but management fixes it quickly."</p>
+                    <div class="review-actions">
+                        <button class="helpful-btn" aria-label="Mark as helpful"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>Helpful (<span class="helpful-count">15</span>)</button>
+                    </div>
+                </div>
+
+                <div class="pagination" style="margin-top:40px"><button class="active">1</button><button>2</button><button>3</button><button>&gt;</button></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Write a Review -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Write a Review</h2>
+                <p>Share your experience to help other students</p>
+            </div>
+            <div class="contact-form-wrapper" style="max-width:700px;margin:0 auto">
+                <form id="review-form">
+                    <div class="form-grid">
+                        <div class="form-group"><label>Your Name <span>*</span></label><input type="text" name="name" placeholder="Enter your name" required><span class="form-error">Please enter your name</span></div>
+                        <div class="form-group"><label>University <span>*</span></label><input type="text" name="university" placeholder="Your university name" required><span class="form-error">Please enter university</span></div>
+                        <div class="form-group"><label>Property Name <span>*</span></label><input type="text" name="property" placeholder="e.g., Al-Noor Hostel" required><span class="form-error">Please enter property name</span></div>
+                        <div class="form-group"><label>City <span>*</span></label><select name="city" required><option value="">Select City</option><option value="karachi">Karachi</option><option value="lahore">Lahore</option><option value="islamabad">Islamabad</option></select><span class="form-error">Please select city</span></div>
+                        <div class="form-group"><label>Rating <span>*</span></label><select name="rating" required><option value="">Select Rating</option><option value="5">5 Stars - Excellent</option><option value="4">4 Stars - Very Good</option><option value="3">3 Stars - Good</option><option value="2">2 Stars - Fair</option><option value="1">1 Star - Poor</option></select><span class="form-error">Please select rating</span></div>
+                        <div class="form-group full-width"><label>Your Review <span>*</span></label><textarea name="review" placeholder="Share your experience with this property..." required></textarea><span class="form-error">Please write your review</span></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" style="margin-top:16px;padding:14px">Submit Review</button>
+                    <div class="success-message">Thank you! Your review has been submitted successfully.</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="index.html" class="logo"><img src="images/logo.png" class="logo-img" alt="UniNest Pakistan" loading="lazy"><span class="logo-text">UniNest</span></a><p>Pakistan's most trusted student housing platform.</p></div>
+                <div class="footer-column"><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="listings.html">Listings</a></li><li><a href="roommate.html">Roommate Finder</a></li><li><a href="about.html">About</a></li></ul></div>
+                <div class="footer-column"><h4>Cities</h4><ul class="footer-links"><li><a href="city-karachi.html">Karachi</a></li><li><a href="city-lahore.html">Lahore</a></li><li><a href="city-islamabad.html">Islamabad</a></li></ul></div>
+                <div class="footer-column"><h4>Contact</h4><ul class="footer-contact"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>support@uninest.pk</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p> 2026 UniNest Pakistan</p><p>Made with <span>&#10084;</span> for Pakistani Students</p></div>
+        </div>
+    </footer>
+    <div class="back-to-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></div>
+
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button id="chatbot-toggle" aria-label="Open UniNest chatbot" title="UniNest Assistant">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </button>
+    <div id="chatbot-box">
+        <div class="chatbot-header"><span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> UniNest Assistant</span><button id="chatbot-close" aria-label="Close chatbot">&times;</button></div>
+        <div id="chatbot-messages"><div class="chat-msg chat-bot">Assalamu Alaikum! Poochein: city, hostel, roommate, price, ya contact.</div></div>
+        <div class="chatbot-input-row"><input type="text" id="chatbot-input" placeholder="Sawal likhein..."><button id="chatbot-send" aria-label="Send chatbot message"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button></div>
+    </div>
+
+    <!-- Property Detail Modal -->
+    <div id="property-modal">
+        <div class="modal-box">
+            <img id="modal-img" class="modal-image" src="" alt="" loading="lazy">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <div class="modal-price" id="modal-price"></div>
+                        <h3 class="modal-title" id="modal-title"></h3>
+                        <div class="modal-location"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span id="modal-location"></span></div>
+                    </div>
+                    <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+                </div>
+                <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:16px" id="modal-desc"></p>
+                <div class="modal-amenities-grid" id="modal-amenities"></div>
+                <div id="modal-calendar"></div>
+                <div class="modal-actions" style="margin-top:16px">
+                    <a id="modal-whatsapp" href="https://wa.me/923001234567" target="_blank" class="btn btn-primary"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg> WhatsApp Owner</a>
+                    <button onclick="showToast && showToast('Visit request sent!','success')" class="btn btn-outline"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg> Book Visit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="lightbox"><img id="lightbox-img" src="" alt="" loading="lazy"><button id="lightbox-close" aria-label="Close image lightbox">&times;</button></div>
+    <a id="whatsapp-btn" href="https://wa.me/923001234567" target="_blank" title="WhatsApp">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.133.558 4.133 1.532 5.874L0 24l6.321-1.503A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.57-.49-5.064-1.345l-.363-.213-3.752.893.928-3.656-.236-.378A9.957 9.957 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    </a>
+
+    <script src="api.js"></script>
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniNest Pakistan - Find Your Perfect Student Home</title>
+    <meta name="description" content="Pakistan's leading student housing platform. Find verified hostels, co-living spaces, private rooms and roommates in Karachi, Lahore, and Islamabad.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Overlay -->
+<div class="mobile-overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" class="logo-img" alt="UniNest Pakistan" loading="lazy">
+                <span class="logo-text">UniNest</span>
+            </a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="listings.html">Listings</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">
+                        Cities
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </span>
+                    <div class="dropdown-menu">
+                        <a href="city-karachi.html">Karachi</a>
+                        <a href="city-lahore.html">Lahore</a>
+                        <a href="city-islamabad.html">Islamabad</a>
+                    </div>
+                </div>
+                <a href="roommate.html">Roommate Finder</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <div class="nav-buttons nav-buttons-mobile">
+                    <a href="login.html" class="btn btn-outline btn-full">Login</a>
+                    <a href="login.html" class="btn btn-primary btn-full">Register</a>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="images/hero-bg.jpg" alt="University Campus" loading="lazy">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="floating-cards">
+            <div class="float-card">
+                <img src="images/property-1.jpg" alt="Karachi Hostel" loading="lazy">
+                <div class="float-card-info">
+                    <h4>Karachi Hostel</h4>
+                    <p>Near NED University</p>
+                    <span>PKR 12,000/mo</span>
+                </div>
+            </div>
+            <div class="float-card">
+                <img src="images/property-4.jpg" alt="Lahore Co-Living" loading="lazy">
+                <div class="float-card-info">
+                    <h4>Lahore Co-Living</h4>
+                    <p>Near LUMS</p>
+                    <span>PKR 18,000/mo</span>
+                </div>
+            </div>
+            <div class="float-card">
+                <img src="images/property-3.jpg" alt="Islamabad Room" loading="lazy">
+                <div class="float-card-info">
+                    <h4>Islamabad Private Room</h4>
+                    <p>Near NUST</p>
+                    <span>PKR 22,000/mo</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                #1 Student Housing Platform in Pakistan
+            </div>
+            <h1>Find <span>Verified</span> Student Housing Near Your University</h1>
+            <p>Hostels, Co-Living Spaces, Private Rooms and Roommate Matching Across Pakistan</p>
+            <form class="search-bar">
+                <div class="search-field">
+                    <label>City</label>
+                    <select name="city" id="hero-city">
+                        <option value="all">All Cities</option>
+                        <option value="karachi">Karachi</option>
+                        <option value="lahore">Lahore</option>
+                        <option value="islamabad">Islamabad</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>Budget</label>
+                    <select name="budget" id="hero-budget">
+                        <option value="all">Any Budget</option>
+                        <option value="10000">Under PKR 10,000</option>
+                        <option value="15000">Under PKR 15,000</option>
+                        <option value="20000">Under PKR 20,000</option>
+                        <option value="30000">Under PKR 30,000</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>Property Type</label>
+                    <select name="type" id="hero-type">
+                        <option value="all">All Types</option>
+                        <option value="hostel">Hostel</option>
+                        <option value="coliving">Co-Living</option>
+                        <option value="private">Private Room</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Search
+                </button>
+            </form>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Verified Listings
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Safe Housing
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    Student Friendly
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="search-results-bar" class="search-results-bar"></div>
+
+    <!-- Section 2: Statistics -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-count="500" data-suffix="+">0+</div>
+                    <div class="stat-label">Verified Listings</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="stat-number" data-count="1000" data-suffix="+">0+</div>
+                    <div class="stat-label">Happy Students</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="stat-number" data-count="3" data-suffix="">0</div>
+                    <div class="stat-label">Major Cities</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-3">
+                    <div class="stat-number" data-count="4.8" data-suffix="">0</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Featured Listings -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Featured Listings</h2>
+                <p>Hand-picked properties that meet our quality standards for students</p>
+            </div>
+            <div class="filter-buttons reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="hostel">Hostel</button>
+                <button class="filter-btn" data-filter="coliving">Co-Living</button>
+                <button class="filter-btn" data-filter="private">Private Room</button>
+            </div>
+            <div class="listings-grid">
+                <!-- Property 1 -->
+                <div class="property-card" data-category="hostel">
+                    <div class="property-image">
+                        <img src="images/property-1.jpg" alt="Al-Noor Hostel" loading="lazy">
+                        <span class="property-badge badge-hostel">Hostel</span>
+                        <button class="property-fav" aria-label="Add to favorites">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">PKR 12,000<span>/month</span></div>
+                        <h3 class="property-title">Al-Noor Boys Hostel</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Gulshan-e-Iqbal, Karachi
+                        </div>
+                        <div class="property-rating">
+                            <div class="stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <span class="rating-text">4.8 (24 reviews)</span>
+                        </div>
+                        <div class="property-amenities">
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>WiFi</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4v10.54a4 4 0 11-4 0V4a2 2 0 014 0Z"/></svg>AC</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Laundry</span>
+                        </div>
+                        <a href="hotel-al-noor-boys-hostel.html" class="property-btn" data-pid="1">View Details</a>
+                    </div>
+                </div>
+                <!-- Property 2 -->
+                <div class="property-card" data-category="coliving">
+                    <div class="property-image">
+                        <img src="images/property-2.jpg" alt="Scholar Co-Living" loading="lazy">
+                        <span class="property-badge badge-coliving">Co-Living</span>
+                        <button class="property-fav" aria-label="Add to favorites">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">PKR 18,500<span>/month</span></div>
+                        <h3 class="property-title">Scholar's Co-Living Space</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Johar Town, Lahore
+                        </div>
+                        <div class="property-rating">
+                            <div class="stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <span class="rating-text">4.9 (36 reviews)</span>
+                        </div>
+                        <div class="property-amenities">
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>WiFi</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4v10.54a4 4 0 11-4 0V4a2 2 0 014 0Z"/></svg>AC</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Security</span>
+                        </div>
+                        <a href="hotel-scholars-co-living-space.html" class="property-btn" data-pid="2">View Details</a>
+                    </div>
+                </div>
+                <!-- Property 3 -->
+                <div class="property-card" data-category="private">
+                    <div class="property-image">
+                        <img src="images/property-3.jpg" alt="Premium Private Room" loading="lazy">
+                        <span class="property-badge badge-private">Private</span>
+                        <button class="property-fav" aria-label="Add to favorites">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">PKR 25,000<span>/month</span></div>
+                        <h3 class="property-title">Premium Private Suite</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            H-12, Islamabad
+                        </div>
+                        <div class="property-rating">
+                            <div class="stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <span class="rating-text">4.7 (18 reviews)</span>
+                        </div>
+                        <div class="property-amenities">
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>WiFi</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4v10.54a4 4 0 11-4 0V4a2 2 0 014 0Z"/></svg>AC</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>TV</span>
+                        </div>
+                        <a href="hotel-premium-private-suite.html" class="property-btn" data-pid="3">View Details</a>
+                    </div>
+                </div>
+                <!-- Property 4 -->
+                <div class="property-card" data-category="coliving">
+                    <div class="property-image">
+                        <img src="images/property-4.jpg" alt="The Scholar Residences" loading="lazy">
+                        <span class="property-badge badge-coliving">Co-Living</span>
+                        <button class="property-fav" aria-label="Add to favorites">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">PKR 20,000<span>/month</span></div>
+                        <h3 class="property-title">The Scholar Residences</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Model Town, Lahore
+                        </div>
+                        <div class="property-rating">
+                            <div class="stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <span class="rating-text">4.9 (42 reviews)</span>
+                        </div>
+                        <div class="property-amenities">
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>WiFi</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4v10.54a4 4 0 11-4 0V4a2 2 0 014 0Z"/></svg>AC</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Laundry</span>
+                        </div>
+                        <a href="hotel-the-scholar-residences.html" class="property-btn" data-pid="4">View Details</a>
+                    </div>
+                </div>
+                <!-- Property 5 -->
+                <div class="property-card" data-category="hostel">
+                    <div class="property-image">
+                        <img src="images/property-5.jpg" alt="Budget Hostel" loading="lazy">
+                        <span class="property-badge badge-hostel">Hostel</span>
+                        <button class="property-fav" aria-label="Add to favorites">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">PKR 8,500<span>/month</span></div>
+                        <h3 class="property-title">Student Budget Hostel</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Saddar, Karachi
+                        </div>
+                        <div class="property-rating">
+                            <div class="stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <span class="rating-text">4.3 (15 reviews)</span>
+                        </div>
+                        <div class="property-amenities">
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>WiFi</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>Fan</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Meals</span>
+                        </div>
+                        <a href="hotel-budget-student-hostel.html" class="property-btn" data-pid="5">View Details</a>
+                    </div>
+                </div>
+                <!-- Property 6 -->
+                <div class="property-card" data-category="hostel">
+                    <div class="property-image">
+                        <img src="images/property-6.jpg" alt="Girls Hostel" loading="lazy">
+                        <span class="property-badge badge-hostel">Hostel</span>
+                        <button class="property-fav" aria-label="Add to favorites">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">PKR 15,000<span>/month</span></div>
+                        <h3 class="property-title">Safe Haven Girls Hostel</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            F-7, Islamabad
+                        </div>
+                        <div class="property-rating">
+                            <div class="stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <span class="rating-text">4.9 (56 reviews)</span>
+                        </div>
+                        <div class="property-amenities">
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>WiFi</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4v10.54a4 4 0 11-4 0V4a2 2 0 014 0Z"/></svg>AC</span>
+                            <span class="amenity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Security</span>
+                        </div>
+                        <a href="hotel-safe-haven-girls-hostel.html" class="property-btn" data-pid="6">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="no-results" style="display:none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="8" x2="14" y2="14"/><line x1="14" y1="8" x2="8" y2="14"/></svg>
+                <h3>No properties found</h3>
+                <p>Try adjusting your filters to see more results</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>How It Works</h2>
+                <p>Find your perfect student home in 3 simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card reveal">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <span class="step-number">01</span>
+                    <h3>Search</h3>
+                    <p>Browse hundreds of verified student properties across Karachi, Lahore, and Islamabad. Filter by budget, location, and amenities.</p>
+                </div>
+                <div class="step-card reveal reveal-delay-1">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                    </div>
+                    <span class="step-number">02</span>
+                    <h3>Compare</h3>
+                    <p>Compare properties side by side. Check reviews, safety ratings, amenities, and pricing to make an informed decision.</p>
+                </div>
+                <div class="step-card reveal reveal-delay-2">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <span class="step-number">03</span>
+                    <h3>Move In</h3>
+                    <p>Contact the property directly, schedule a visit, and move into your new student home. It's that simple!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Popular Cities -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Popular Cities</h2>
+                <p>Explore student housing options in Pakistan's top university cities</p>
+            </div>
+            <div class="cities-grid">
+                <a href="city-karachi.html" class="city-card reveal">
+                    <img src="images/city-karachi.jpg" alt="Karachi" loading="lazy">
+                    <div class="city-overlay">
+                        <h3>Karachi</h3>
+                        <p>200+ Properties near NED, FAST, Karachi University</p>
+                        <span class="city-btn">
+                            Explore Karachi
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                </a>
+                <a href="city-lahore.html" class="city-card reveal reveal-delay-1">
+                    <img src="images/city-lahore.jpg" alt="Lahore" loading="lazy">
+                    <div class="city-overlay">
+                        <h3>Lahore</h3>
+                        <p>180+ Properties near LUMS, UCP, Punjab University</p>
+                        <span class="city-btn">
+                            Explore Lahore
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                </a>
+                <a href="city-islamabad.html" class="city-card reveal reveal-delay-2">
+                    <img src="images/city-islamabad.jpg" alt="Islamabad" loading="lazy">
+                    <div class="city-overlay">
+                        <h3>Islamabad</h3>
+                        <p>120+ Properties near NUST, COMSATS, FAST</p>
+                        <span class="city-btn">
+                            Explore Islamabad
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What Students Say</h2>
+                <p>Real reviews from students who found their home through UniNest</p>
+            </div>
+            <div class="testimonial-slider reveal">
+                <div class="testimonial-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-text">"UniNest made my hostel search so easy! I found a clean, affordable hostel near NED University within 2 days. The verification system gave my parents peace of mind. Highly recommended!"</p>
+                            <div class="testimonial-author">
+                                <img src="images/roommate-1.jpg" alt="Ahmed Khan" loading="lazy">
+                                <div class="testimonial-author-info">
+                                    <h4>Ahmed Khan</h4>
+                                    <p>NED University, Karachi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-text">"As a girl moving to Islamabad for university, safety was my top priority. UniNest helped me find a secure girls hostel near NUST with all amenities. The roommate matching feature is amazing!"</p>
+                            <div class="testimonial-author">
+                                <img src="images/roommate-2.jpg" alt="Ayesha Malik" loading="lazy">
+                                <div class="testimonial-author-info">
+                                    <h4>Ayesha Malik</h4>
+                                    <p>NUST, Islamabad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-text">"Found a great co-living space near LUMS through UniNest. The budget filter helped me find something affordable. The property photos and reviews were accurate. Great platform for students!"</p>
+                            <div class="testimonial-author">
+                                <img src="images/roommate-3.jpg" alt="Usman Ali" loading="lazy">
+                                <div class="testimonial-author-info">
+                                    <h4>Usman Ali</h4>
+                                    <p>LUMS, Lahore</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="testimonial-text">"I used the roommate finder feature and matched with 3 other medical students at KEMU. We now share an amazing apartment in Lahore. The compatibility matching actually works!"</p>
+                            <div class="testimonial-author">
+                                <img src="images/roommate-4.jpg" alt="Fatima Zahra" loading="lazy">
+                                <div class="testimonial-author-info">
+                                    <h4>Fatima Zahra</h4>
+                                    <p>KEMU, Lahore</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-prev" aria-label="Previous testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <button class="testimonial-next" aria-label="Next testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Roommate Banner -->
+    <section class="roommate-banner">
+        <div class="container">
+            <div class="roommate-banner-content">
+                <h2>Looking For A Roommate?</h2>
+                <p>Connect with verified students looking for shared accommodation. Find your perfect roommate match based on lifestyle, budget, and preferences.</p>
+                <div class="roommate-banner-buttons">
+                    <a href="roommate.html" class="btn btn-lg" style="background:var(--white);color:var(--primary)">Find Roommate</a>
+                    <a href="roommate.html" class="btn btn-outline btn-lg" style="border-color:var(--white);color:var(--white)">Post Profile</a>
+                </div>
+            </div>
+            <div class="roommate-banner-img">
+                <img src="images/blog-1.jpg" alt="Students together" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Blog -->
+    <section class="section" id="tips">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Housing Tips & Guides</h2>
+                <p>Helpful resources for students moving to a new city</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card reveal">
+                    <div class="blog-image">
+                        <img src="images/blog-1.jpg" alt="Student Housing Tips" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Guide</span>
+                        <h3>Complete Guide to Student Housing in Pakistan</h3>
+                        <p>Everything you need to know about finding safe, affordable accommodation near your university campus.</p>
+                        <a href="guide-student-housing-pakistan.html" class="blog-link">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-card reveal reveal-delay-1">
+                    <div class="blog-image">
+                        <img src="images/blog-2.jpg" alt="Budget Planning" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Finance</span>
+                        <h3>Budget Planning for Student Accommodation</h3>
+                        <p>Learn how to plan your monthly budget including rent, food, transport, and other essential expenses.</p>
+                        <a href="guide-budget-planning.html" class="blog-link">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-card reveal reveal-delay-2">
+                    <div class="blog-image">
+                        <img src="images/blog-3.jpg" alt="Moving Checklist" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Checklist</span>
+                        <h3>Ultimate Moving Checklist for Students</h3>
+                        <p>Don't forget anything on your moving day. Our comprehensive checklist covers all essentials.</p>
+                        <a href="guide-moving-checklist.html" class="blog-link">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Rent Trend Chart -->
+    <section id="rent-chart-section" class="section">
+        <div class="container">
+            <div class="section-header reveal" style="text-align:center;margin-bottom:32px">
+                <h2>Rent Trends Across Pakistan</h2>
+                <p>Average student rent comparison (2022–2026)</p>
+            </div>
+            <canvas id="rent-chart"></canvas>
+        </div>
+    </section>
+
+    <!-- Cost Calculator Section -->
+    <section class="section" style="background:var(--bg-dark);padding:60px 0">
+        <div class="container">
+            <div class="section-header reveal" style="text-align:center;margin-bottom:32px">
+                <h2>Housing Cost Calculator</h2>
+                <p>Apne budget ka andaza lagayein pehle se</p>
+            </div>
+            <div id="cost-calculator" class="reveal">
+                <h3>📊 Budget Calculator</h3>
+                <div class="calc-row">
+                    <select id="calc-city">
+                        <option value="">City Select Karein</option>
+                        <option value="karachi">Karachi</option>
+                        <option value="lahore">Lahore</option>
+                        <option value="islamabad">Islamabad</option>
+                    </select>
+                    <select id="calc-type">
+                        <option value="">Type Select Karein</option>
+                        <option value="hostel">Hostel</option>
+                        <option value="coliving">Co-Living</option>
+                        <option value="private">Private Room</option>
+                    </select>
+                    <input type="number" id="calc-months" placeholder="Months" min="1" max="24" value="6">
+                </div>
+                <button id="calc-btn">Calculate Budget</button>
+                <div id="calc-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Comparison Section -->
+    <section id="city-comparison" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>City Comparison</h2>
+                <p>Cities compare karein aur apna ideal location choose karein</p>
+            </div>
+            <div class="compare-btns">
+                <button class="compare-city-btn" data-city="karachi">🌊 Karachi</button>
+                <button class="compare-city-btn" data-city="lahore">🌹 Lahore</button>
+                <button class="compare-city-btn" data-city="islamabad">🏔️ Islamabad</button>
+            </div>
+            <div id="compare-table"></div>
+        </div>
+    </section>
+
+    <!-- Saved Favorites -->
+    <section id="favorites-section" class="section" style="background:var(--white)">
+        <div class="container">
+            <div class="section-header" style="text-align:center;margin-bottom:32px">
+                <h2>❤️ Your Saved Properties</h2>
+                <p>Properties jo aapne save ki hain</p>
+            </div>
+            <div id="favs-grid" class="listings-grid"></div>
+        </div>
+    </section>
+
+    <!-- Pakistan Interactive Map -->
+    <section id="pakistan-map-section" class="section">
+        <div class="container">
+            <div class="section-header reveal" style="text-align:center;margin-bottom:32px">
+                <h2>Explore by City</h2>
+                <p>Click on a city to explore student housing</p>
+            </div>
+            <div class="pak-map-container" style="position:relative;max-width:460px;margin:0 auto">
+                <svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:1;position:absolute;top:0;left:0">
+                    <path d="M200,30 L380,120 L360,200 L300,280 L280,380 L200,460 L120,380 L100,280 L40,200 L20,120 Z" fill="rgba(15,118,110,0.18)"/>
+                </svg>
+                <div style="position:relative;height:460px;display:flex;align-items:center;justify-content:center">
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#EEF2FF,#FFF7ED);border-radius:24px;position:relative;overflow:hidden">
+                        <p style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#9CA3AF;font-size:0.85rem;text-align:center">🗺️ Pakistan<br>Student Housing Map</p>
+                        <!-- Karachi -->
+                        <div class="map-city-dot" style="left:30%;top:82%"></div>
+                        <a href="city-karachi.html" class="map-city-btn" style="left:30%;top:75%">🌊 Karachi<br><small>200+ Properties</small></a>
+                        <!-- Lahore -->
+                        <div class="map-city-dot" style="left:55%;top:45%"></div>
+                        <a href="city-lahore.html" class="map-city-btn" style="left:55%;top:38%">🌹 Lahore<br><small>180+ Properties</small></a>
+                        <!-- Islamabad -->
+                        <div class="map-city-dot" style="left:48%;top:28%"></div>
+                        <a href="city-islamabad.html" class="map-city-btn" style="left:48%;top:18%">🏔️ Islamabad<br><small>120+ Properties</small></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" class="logo-img" alt="UniNest Pakistan" loading="lazy">
+                        <span class="logo-text">UniNest</span>
+                    </a>
+                    <p>Pakistan's most trusted student housing platform. We help thousands of students find their perfect home away from home every semester.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/uninestpk" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                        <a href="https://www.instagram.com/uninestpk" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="https://twitter.com/uninestpk" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 8v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/uninestpk" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Browse Listings</a></li>
+                        <li><a href="roommate.html">Roommate Finder</a></li>
+                        <li><a href="reviews.html">Student Reviews</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Cities</h4>
+                    <ul class="footer-links">
+                        <li><a href="city-karachi.html">Karachi</a></li>
+                        <li><a href="city-lahore.html">Lahore</a></li>
+                        <li><a href="city-islamabad.html">Islamabad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size:0.9rem;color:rgba(255,255,255,0.7);margin-bottom:16px">Subscribe for new listings and student housing tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <ul class="footer-contact" style="margin-top:20px">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            support@uninest.pk
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            +92 300 1234567
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p> 2026 UniNest Pakistan. All rights reserved.</p>
+                <p>Made with <span style="color:#EF4444">&#10084;</span> for Pakistani Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </div>
+
+
+
+    <!-- Property Detail Modal -->
+    <div id="property-modal">
+        <div class="modal-box">
+            <img id="modal-img" class="modal-image" src="" alt="" loading="lazy">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <div class="modal-price" id="modal-price"></div>
+                        <h3 class="modal-title" id="modal-title"></h3>
+                        <div class="modal-location"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span id="modal-location"></span></div>
+                    </div>
+                    <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+                </div>
+                <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:16px" id="modal-desc"></p>
+                <div class="modal-amenities-grid" id="modal-amenities"></div>
+                <div class="modal-map">🗺️ Near <span id="modal-location2"></span></div>
+                <div id="modal-calendar"></div>
+                <div class="modal-actions" style="margin-top:16px">
+                    <a id="modal-whatsapp" href="https://wa.me/923001234567" target="_blank" class="btn btn-primary">
+                        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg> WhatsApp Owner
+                    </a>
+                    <button onclick="showToast('Visit request sent! Owner will contact you.','success')" class="btn btn-outline">
+                        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg> Book Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="" loading="lazy">
+        <button id="lightbox-close" aria-label="Close image lightbox">&times;</button>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a id="whatsapp-btn" href="https://wa.me/923001234567?text=Hi UniNest! I need help finding student housing." target="_blank" title="Chat on WhatsApp">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.133.558 4.133 1.532 5.874L0 24l6.321-1.503A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.57-.49-5.064-1.345l-.363-.213-3.752.893.928-3.656-.236-.378A9.957 9.957 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    </a>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+
+    <!-- UniNest Assistant Chatbot -->
+    <button id="chatbot-toggle" aria-label="Open UniNest chatbot" title="UniNest Assistant">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </button>
+    <div id="chatbot-box">
+        <div class="chatbot-header">
+            <span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> UniNest Assistant</span>
+            <button id="chatbot-close" aria-label="Close chatbot">&times;</button>
+        </div>
+        <div id="chatbot-messages">
+            <div class="chat-msg chat-bot">Assalamu Alaikum! Main UniNest Assistant hoon. Poochein: city name, hostel, roommate, price, ya contact 😊</div>
+        </div>
+        <div class="chatbot-input-row">
+            <input type="text" id="chatbot-input" placeholder="Apna sawal likhein...">
+            <button id="chatbot-send" aria-label="Send chatbot message"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        try { await Search.init(); } catch(e) { console.warn("Search init failed - open via Live Server"); }
+
+        // --- Load Featured Properties dynamically ---
+        const featuredGrid = document.querySelector('.listings-grid');
+        if (featuredGrid) {
+            const props = Search.allProperties().slice(0, 6);
+            Search.renderGrid(featuredGrid, props);
+        }
+
+        // --- Load Testimonials dynamically ---
+        const testimonials = await API.getTestimonials();
+        const testimonialTrack = document.querySelector('.testimonial-track');
+        if (testimonialTrack && testimonials) {
+            testimonialTrack.innerHTML = testimonials.map(t => `
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">${'★'.repeat(t.rating)}</div>
+                        <p class="testimonial-text">"${t.comment}"</p>
+                        <div class="testimonial-author">
+                            <img src="${t.avatar}" alt="${t.name}" onerror="this.style.display='none'" loading="lazy">
+                            <div>
+                                <h5>${t.name}</h5>
+                                <p>${t.university} • ${t.city.charAt(0).toUpperCase()+t.city.slice(1)}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`).join('');
+        }
+
+        // --- Hero Search ---
+        const searchBtn = document.getElementById('hero-search-btn');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const city = document.getElementById('hero-city')?.value || 'all';
+                const type = document.getElementById('hero-type')?.value || 'all';
+                const budget = document.getElementById('hero-budget')?.value || 'all';
+                const results = Search.filter({ city, type, budget });
+                const grid = document.querySelector('.listings-grid');
+                if (grid) {
+                    Search.renderGrid(grid, results);
+                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if(typeof showToast!=='undefined') showToast(results.length + ' properties found!', 'info');
+                }
+            });
+        }
+
+        // --- Modal close ---
+        document.getElementById('modal-close')?.addEventListener('click', () => {
+            document.getElementById('property-modal')?.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        document.getElementById('property-modal')?.addEventListener('click', function(e) {
+            if (e.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }
+        });
+    });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listings - UniNest Pakistan</title>
+    <meta name="description" content="Browse verified student housing listings in Karachi, Lahore, and Islamabad. Filter by city, price, and amenities.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mobile-overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" class="logo-img" alt="UniNest Pakistan" loading="lazy">
+                <span class="logo-text">UniNest</span>
+            </a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="listings.html" class="active">Listings</a>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">Cities <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+                    <div class="dropdown-menu">
+                        <a href="city-karachi.html">Karachi</a>
+                        <a href="city-lahore.html">Lahore</a>
+                        <a href="city-islamabad.html">Islamabad</a>
+                    </div>
+                </div>
+                <a href="roommate.html">Roommate Finder</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <div class="nav-buttons nav-buttons-mobile">
+                    <a href="login.html" class="btn btn-outline btn-full">Login</a>
+                    <a href="login.html" class="btn btn-primary btn-full">Register</a>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Find Your Perfect Student Home</h1>
+            <p id="listings-hero-subtitle">Browse 500+ verified listings across Pakistan's top university cities</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-row">
+                <div class="filter-group">
+                    <label>City</label>
+                    <select id="filter-city">
+                        <option value="all">All Cities</option>
+                        <option value="karachi">Karachi</option>
+                        <option value="lahore">Lahore</option>
+                        <option value="islamabad">Islamabad</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Price Range</label>
+                    <select id="filter-price">
+                        <option value="all">Any Price</option>
+                        <option value="0-10000">Under PKR 10,000</option>
+                        <option value="10000-15000">PKR 10,000 - 15,000</option>
+                        <option value="15000-20000">PKR 15,000 - 20,000</option>
+                        <option value="20000-30000">PKR 20,000 - 30,000</option>
+                        <option value="30000-plus">Above PKR 30,000</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Property Type</label>
+                    <select id="filter-type">
+                        <option value="all">All Types</option>
+                        <option value="hostel">Hostel</option>
+                        <option value="coliving">Co-Living</option>
+                        <option value="private">Private Room</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Safety Rating</label>
+                    <select id="filter-rating">
+                        <option value="all">Any Rating</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                        <option value="3.5">3.5+ Stars</option>
+                    </select>
+                </div>
+                <div class="filter-group sort-group">
+                    <label>Sort By</label>
+                    <select id="listings-sort">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listings Grid -->
+    <section class="section listings-page">
+        <div class="container">
+            <div class="listings-grid" id="listings-grid"></div>
+            <div class="no-results" style="display:none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="8" x2="14" y2="14"/><line x1="14" y1="8" x2="8" y2="14"/></svg>
+                <h3>No properties found</h3>
+                <p>Try adjusting your filters to see more results</p>
+            </div>
+            <div class="pagination">
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo"><img src="images/logo.png" class="logo-img" alt="UniNest Pakistan" loading="lazy"><span class="logo-text">UniNest</span></a>
+                    <p>Pakistan's most trusted student housing platform. We help thousands of students find their perfect home away from home every semester.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/uninestpk" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                        <a href="https://www.instagram.com/uninestpk" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="https://twitter.com/uninestpk" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 8v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Browse Listings</a></li>
+                        <li><a href="roommate.html">Roommate Finder</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Cities</h4>
+                    <ul class="footer-links">
+                        <li><a href="city-karachi.html">Karachi</a></li>
+                        <li><a href="city-lahore.html">Lahore</a></li>
+                        <li><a href="city-islamabad.html">Islamabad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Stay Updated</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p> 2026 UniNest Pakistan. All rights reserved.</p>
+                <p>Made with <span style="color:#EF4444">&#10084;</span> for Pakistani Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></div>
+
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button id="chatbot-toggle" aria-label="Open UniNest chatbot" title="UniNest Assistant">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </button>
+    <div id="chatbot-box">
+        <div class="chatbot-header"><span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> UniNest Assistant</span><button id="chatbot-close" aria-label="Close chatbot">&times;</button></div>
+        <div id="chatbot-messages"><div class="chat-msg chat-bot">Assalamu Alaikum! Poochein: city, hostel, roommate, price, ya contact.</div></div>
+        <div class="chatbot-input-row"><input type="text" id="chatbot-input" placeholder="Sawal likhein..."><button id="chatbot-send" aria-label="Send chatbot message"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button></div>
+    </div>
+<script src="api.js"></script>
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Property Modal -->
+    <div id="property-modal">
+        <div class="modal-box">
+            <img id="modal-img" class="modal-image" src="" alt="" loading="lazy">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <div class="modal-price" id="modal-price"></div>
+                        <h3 class="modal-title" id="modal-title"></h3>
+                        <div class="modal-location"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span id="modal-location"></span></div>
+                    </div>
+                    <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+                </div>
+                <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:16px" id="modal-desc"></p>
+                <div class="modal-amenities-grid" id="modal-amenities"></div>
+                <div class="modal-actions" style="margin-top:16px">
+                    <a id="modal-whatsapp" href="https://wa.me/923001234567" target="_blank" class="btn btn-primary"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg> WhatsApp Owner</a>
+                    <button onclick="showToast&&showToast('Visit request sent!','success')" class="btn btn-outline"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg> Book Visit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="lightbox"><img id="lightbox-img" src="" alt="" loading="lazy"><button id="lightbox-close" aria-label="Close image lightbox">&times;</button></div>
+    <a id="whatsapp-btn" href="https://wa.me/923001234567" target="_blank" title="WhatsApp">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.133.558 4.133 1.532 5.874L0 24l6.321-1.503A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.57-.49-5.064-1.345l-.363-.213-3.752.893.928-3.656-.236-.378A9.957 9.957 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    </a>
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        const grid = document.getElementById('listings-grid') || document.querySelector('.listings-grid');
+        const noResultsBox = document.querySelector('.no-results');
+        const params = new URLSearchParams(window.location.search);
+        let universityParam = (params.get('university') || 'all').toLowerCase().trim();
+        const allowedUniversities = ['all','ned','lums','nust','fast'];
+        if (!allowedUniversities.includes(universityParam)) universityParam = 'all';
+
+        const universityLabels = {
+            ned: 'NED University',
+            lums: 'LUMS',
+            nust: 'NUST',
+            fast: 'FAST-NUCES'
+        };
+        const universityCities = {
+            ned: 'karachi',
+            lums: 'lahore',
+            nust: 'islamabad',
+            fast: 'all'
+        };
+
+        const heroSubtitle = document.getElementById('listings-hero-subtitle');
+        const citySelect = document.getElementById('filter-city');
+        const typeSelect = document.getElementById('filter-type');
+        const priceSelect = document.getElementById('filter-price');
+        const ratingSelect = document.getElementById('filter-rating');
+        const sortSelect = document.getElementById('listings-sort');
+        const filtersContainer = document.querySelector('.filters-section .container');
+
+        function setUniversityUI() {
+            if (universityParam !== 'all') {
+                if (heroSubtitle) heroSubtitle.textContent = `Showing verified housing near ${universityLabels[universityParam]}`;
+                if (citySelect && universityCities[universityParam] !== 'all') {
+                    citySelect.value = universityCities[universityParam];
+                    citySelect.disabled = true;
+                    citySelect.title = 'City is locked by university filter. Clear university filter to change city.';
+                }
+                if (filtersContainer && !document.querySelector('.university-filter-note')) {
+                    filtersContainer.insertAdjacentHTML('afterbegin', `<div class="university-filter-note"><span>University filter active: ${universityLabels[universityParam]}</span><a href="listings.html">Clear filter</a></div>`);
+                }
+            } else {
+                const cityParam = (params.get('city') || 'all').toLowerCase().trim();
+                if (citySelect && ['karachi','lahore','islamabad'].includes(cityParam)) citySelect.value = cityParam;
+            }
+        }
+
+        function showMessage(message) {
+            if (!grid) return;
+            grid.innerHTML = `<div style="text-align:center;padding:45px 20px;color:var(--text-light);grid-column:1/-1"><p style="font-size:1.05rem;margin:0">${message}</p></div>`;
+            if (noResultsBox) noResultsBox.style.display = 'none';
+        }
+
+        function sortResults(results) {
+            const sortValue = sortSelect?.value || 'default';
+            const copy = [...results];
+            if (sortValue === 'price-low') copy.sort((a,b) => Number(a.price || 0) - Number(b.price || 0));
+            if (sortValue === 'price-high') copy.sort((a,b) => Number(b.price || 0) - Number(a.price || 0));
+            if (sortValue === 'rating') copy.sort((a,b) => Number(b.rating || 0) - Number(a.rating || 0));
+            return copy;
+        }
+
+        function applyFilters() {
+            if (!grid || typeof Search === 'undefined') return;
+            let city = citySelect?.value || 'all';
+            const type = typeSelect?.value || 'all';
+            const budget = priceSelect?.value || 'all';
+            const rating = ratingSelect?.value || 'all';
+
+            if (universityParam !== 'all' && universityCities[universityParam] !== 'all') {
+                city = universityCities[universityParam];
+                if (citySelect) citySelect.value = city;
+            }
+
+            let results = Search.filter({ city, type, budget, university: universityParam });
+            if (rating !== 'all') results = results.filter(p => Number(p.rating || 0) >= Number(rating));
+            results = sortResults(results);
+
+            if (!results.length) {
+                grid.innerHTML = '<div style="text-align:center;padding:45px 20px;color:var(--text-light);grid-column:1/-1"><p style="font-size:1.05rem;margin:0">Koi property nahi mili. Filters change karein ya university filter clear karein.</p></div>';
+                if (noResultsBox) noResultsBox.style.display = 'none';
+                return;
+            }
+
+            Search.renderGrid(grid, results);
+            if (noResultsBox) noResultsBox.style.display = 'none';
+        }
+
+        setUniversityUI();
+        showMessage('Loading properties...');
+
+        try {
+            await Search.init();
+            applyFilters();
+        } catch (e) {
+            console.warn('Listings load failed:', e);
+            showMessage('Properties load nahi ho sakin. Website ko npm start / localhost par open karein.');
+        }
+
+        [citySelect, typeSelect, priceSelect, ratingSelect, sortSelect].forEach(el => {
+            if (el) el.addEventListener('change', applyFilters);
+        });
+    });
+    </script>
+</body>
+</html>

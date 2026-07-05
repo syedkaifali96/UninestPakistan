@@ -1,0 +1,377 @@
+[
+  {
+    "id": 1,
+    "title": "Al-Noor Boys Hostel",
+    "type": "hostel",
+    "city": "karachi",
+    "area": "Gulshan-e-Iqbal",
+    "price": 12000,
+    "gender": "male",
+    "rating": 4.5,
+    "image": "images/property-1.jpg",
+    "amenities": [
+      "WiFi",
+      "AC",
+      "Laundry",
+      "Security"
+    ],
+    "desc": "Fully verified boys hostel near NED University. Safe neighborhood, warden on duty 24/7.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 12000
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 15000
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 8500
+      }
+    ],
+    "gallery": [
+      "images/property-1.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-al-noor-boys-hostel.html"
+  },
+  {
+    "id": 2,
+    "title": "Scholar's Co-Living Space",
+    "type": "coliving",
+    "city": "lahore",
+    "area": "Johar Town",
+    "price": 18500,
+    "gender": "any",
+    "rating": 4.7,
+    "image": "images/property-2.jpg",
+    "amenities": [
+      "WiFi",
+      "AC",
+      "Security",
+      "Study Room"
+    ],
+    "desc": "Premium co-living space near LUMS. Modern furnished rooms with a vibrant student community.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 18500
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 23000
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 13000
+      }
+    ],
+    "gallery": [
+      "images/property-2.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-scholars-co-living-space.html"
+  },
+  {
+    "id": 3,
+    "title": "Premium Private Suite",
+    "type": "private",
+    "city": "islamabad",
+    "area": "H-12",
+    "price": 25000,
+    "gender": "any",
+    "rating": 4.8,
+    "image": "images/property-3.jpg",
+    "amenities": [
+      "WiFi",
+      "AC",
+      "TV",
+      "Attached Bath",
+      "Parking"
+    ],
+    "desc": "Luxurious private suite near NUST with all modern amenities.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 25000
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 31000
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 17500
+      }
+    ],
+    "gallery": [
+      "images/property-3.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-premium-private-suite.html"
+  },
+  {
+    "id": 4,
+    "title": "The Scholar Residences",
+    "type": "coliving",
+    "city": "lahore",
+    "area": "Model Town",
+    "price": 20000,
+    "gender": "any",
+    "rating": 4.6,
+    "image": "images/property-4.jpg",
+    "amenities": [
+      "WiFi",
+      "AC",
+      "Laundry",
+      "Gym",
+      "Cafeteria"
+    ],
+    "desc": "Established co-living brand in Lahore. Near Punjab University and UCP.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 20000
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 25000
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 14000
+      }
+    ],
+    "gallery": [
+      "images/property-4.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-the-scholar-residences.html"
+  },
+  {
+    "id": 5,
+    "title": "Budget Student Hostel",
+    "type": "hostel",
+    "city": "karachi",
+    "area": "Saddar",
+    "price": 8500,
+    "gender": "male",
+    "rating": 4.2,
+    "image": "images/property-5.jpg",
+    "amenities": [
+      "WiFi",
+      "Meals",
+      "Laundry"
+    ],
+    "desc": "Most affordable verified hostel in Karachi. Meals included in rent.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 8500
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 10500
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 6500
+      }
+    ],
+    "gallery": [
+      "images/property-5.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-budget-student-hostel.html"
+  },
+  {
+    "id": 6,
+    "title": "Safe Haven Girls Hostel",
+    "type": "hostel",
+    "city": "islamabad",
+    "area": "F-7",
+    "price": 15000,
+    "gender": "female",
+    "rating": 4.9,
+    "image": "images/property-6.jpg",
+    "amenities": [
+      "WiFi",
+      "AC",
+      "Security",
+      "CCTV",
+      "Meals",
+      "Lady Warden"
+    ],
+    "desc": "Premium girls-only hostel in the safest sector of Islamabad.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 15000
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 19000
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 10500
+      }
+    ],
+    "gallery": [
+      "images/property-6.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-safe-haven-girls-hostel.html"
+  },
+  {
+    "id": 7,
+    "title": "Study Hub Co-Living",
+    "type": "coliving",
+    "city": "lahore",
+    "area": "DHA",
+    "price": 22000,
+    "gender": "any",
+    "rating": 4.7,
+    "image": "images/property-7.jpg",
+    "amenities": [
+      "WiFi",
+      "AC",
+      "Laundry",
+      "Library",
+      "Cafe"
+    ],
+    "desc": "Modern co-living in DHA Phase 5. Perfect for LUMS & UCP students.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 22000
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 27500
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 15500
+      }
+    ],
+    "gallery": [
+      "images/property-7.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-study-hub-co-living.html"
+  },
+  {
+    "id": 8,
+    "title": "UniLife Dining Hostel",
+    "type": "hostel",
+    "city": "karachi",
+    "area": "Korangi",
+    "price": 10000,
+    "gender": "male",
+    "rating": 4.3,
+    "image": "images/property-8.jpg",
+    "amenities": [
+      "WiFi",
+      "Meals",
+      "Laundry",
+      "TV Lounge"
+    ],
+    "desc": "Affordable hostel with free breakfast & dinner included.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 10000
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 12500
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 7000
+      }
+    ],
+    "gallery": [
+      "images/property-8.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-unilife-dining-hostel.html"
+  },
+  {
+    "id": 9,
+    "title": "Luxury Studio Apartment",
+    "type": "private",
+    "city": "islamabad",
+    "area": "G-10",
+    "price": 35000,
+    "gender": "any",
+    "rating": 4.8,
+    "image": "images/property-9.jpg",
+    "amenities": [
+      "WiFi",
+      "AC",
+      "Security",
+      "Gym",
+      "Smart TV",
+      "Backup Power"
+    ],
+    "desc": "High-end studio apartment for students who want premium living near COMSATS.",
+    "phone": "+923001234567",
+    "available": true,
+    "roomTypes": [
+      {
+        "name": "Double Sharing",
+        "price": 35000
+      },
+      {
+        "name": "Single Room (AC)",
+        "price": 44000
+      },
+      {
+        "name": "Triple Sharing",
+        "price": 24500
+      }
+    ],
+    "gallery": [
+      "images/property-9.jpg",
+      "images/property-2.jpg",
+      "images/property-3.jpg"
+    ],
+    "nearby": [],
+    "page": "hotel-luxury-studio-apartment.html"
+  }
+]

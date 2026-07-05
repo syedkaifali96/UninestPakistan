@@ -1,0 +1,5 @@
+[
+  {"id":"karachi","name":"Karachi","tagline":"City of Lights","properties":200,"avgRent":15000,"universities":25,"rating":4.6,"image":"images/city-karachi.jpg","areas":["Gulshan-e-Iqbal","Saddar","DHA","Clifton","PECHS","Korangi","North Nazimabad"]},
+  {"id":"lahore","name":"Lahore","tagline":"Heart of Pakistan","properties":180,"avgRent":18000,"universities":30,"rating":4.7,"image":"images/city-lahore.jpg","areas":["Johar Town","DHA","Model Town","Gulberg","Township","Bahria Town"]},
+  {"id":"islamabad","name":"Islamabad","tagline":"Capital Territory","properties":120,"avgRent":22000,"universities":20,"rating":4.8,"image":"images/city-islamabad.jpg","areas":["H-12","F-7","G-10","F-8","E-9","H-10","I-8"]}
+]
