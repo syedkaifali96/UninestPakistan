@@ -2,6 +2,8 @@
 
 A student hostel & roommate-finder platform for university students across **Karachi, Lahore, and Islamabad**. Built as an Aptech eProject with a full Node.js/Express + SQLite backend.
 
+### 🔴 Live Demo: [uninest-pakistan--syedkaifali96.replit.app](https://uninest-pakistan--syedkaifali96.replit.app/)
+
 ## Features
 
 - 🔍 Property/hostel listings with search & filters (city, budget, gender-specific, university proximity)
